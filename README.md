@@ -4,11 +4,13 @@ Word-by-word helpers for Romanian readers: **Zbor** explains Aromanian, **Lav** 
 Built for the Veritas AI International High School Hackathon 2026 (AI + Languages track) by Lavinia Ichim, Bianca-Mihaela Cajvan and Alexandru-Eduard Bejenaru.
 
 **Live site:** https://bejenaru1.github.io/zbor-lav/
+**Notebook (code and all results):** [open in Google Colab](https://colab.research.google.com/github/bejenaru1/zbor-lav/blob/main/Zbor.ipynb) · [`Zbor.ipynb`](Zbor.ipynb)
 
 ## What is here
 
 | File | What it is |
 |---|---|
+| `Zbor.ipynb` | The notebook: data, models, experiments, test results, and the export of the two dictionary files below. Every cell keeps its output, so you can read it without running it. |
 | `index.html` | The whole website. Everything runs in the browser; nothing you type is sent anywhere. |
 | `zbor_aro.js` | Zbor's learned Aromanian→Romanian dictionary, exported by our notebook |
 | `zbor_rom.js` | Lav's learned Romani→Romanian dictionary and the language detector, exported by our notebook |
