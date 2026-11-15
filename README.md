@@ -4,6 +4,7 @@ Word-by-word helpers for Romanian readers: **Zbor** explains Aromanian, **Lav** 
 Built for the Veritas AI International High School Hackathon 2026 (AI + Languages track) by Lavinia Ichim, Bianca-Mihaela Cajvan and Alexandru-Eduard Bejenaru.
 
 **Live site:** https://bejenaru1.github.io/zbor-lav/
+**Write-up (one page):** [WRITEUP.md](WRITEUP.md) · [PDF](Zbor_Lav_writeup.pdf)
 **Notebook (code and all results):** [open in Google Colab](https://colab.research.google.com/github/bejenaru1/zbor-lav/blob/main/Zbor.ipynb) · [`Zbor.ipynb`](Zbor.ipynb)
 
 ## What is here
