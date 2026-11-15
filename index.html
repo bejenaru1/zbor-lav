@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zbor · Lav</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#B3122B">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 44'%3E%3Cpath d='M4 43V20A16 16 0 0 1 36 20V43Z' fill='%23B3122B'/%3E%3Cpath d='M8.5 43V20.5A11.5 11.5 0 0 1 31.5 20.5V43' fill='none' stroke='%23F7F1E6' stroke-width='1.6'/%3E%3Cpath d='M20 3.4 21 6.3 23.9 7.3 21 8.3 20 11.2 19 8.3 16.1 7.3 19 6.3Z' fill='%23F7F1E6'/%3E%3Ctext x='20' y='35' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='17' fill='%23F7F1E6'%3Ezl%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Zbor · Lav: Aromanian and Romani, word by word">
+<meta property="og:description" content="Paste a text in Aromanian or Romani. Zbor · Lav finds the language, explains every word and flags the look-alike traps Romanians fall for.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Zbor · Lav explains Aromanian and Romani texts word by word for Romanian readers, and flags the words Romanians usually get wrong.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F1E6;--paper:#FFFFFF;--well:#FBF8F2;--ink:#201818;--soft:#5E5148;--line:#E2D6C4;--crimson:#B3122B;--crimson-ink:#B3122B;--on-crimson:#F7F1E6;--ground:#B3122B;--shadow:0 10px 24px -12px rgba(32,24,24,.25);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171212;--paper:#211A1A;--well:#1C1616;--ink:#F3EADC;--soft:#C2B4A4;--line:#3A2E2B;--crimson:#C2223A;--crimson-ink:#F07A8C;--on-crimson:#FBF3E8;--ground:#7E0E20;--shadow:0 10px 24px -12px rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171212;--paper:#211A1A;--well:#1C1616;--ink:#F3EADC;--soft:#C2B4A4;--line:#3A2E2B;--crimson:#C2223A;--crimson-ink:#F07A8C;--on-crimson:#FBF3E8;--ground:#7E0E20;--shadow:0 10px 24px -12px rgba(0,0,0,.6);color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--crimson-ink)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--crimson-ink);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--crimson);color:var(--on-crimson);padding:8px 12px;z-index:10}.skip:focus{left:8px}
+.wrap{max-width:1312px;margin:0 auto;padding:0 64px}
+/* nav */
+.nav{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:5}
+.nav .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;white-space:nowrap;color:var(--crimson-ink)}
+.logo .emblem{width:38px;height:42px;flex:none;transition:transform .25s}.logo:hover .emblem{transform:translateY(-2px) rotate(-3deg)}
+.logo .wm{display:flex;flex-direction:column;line-height:1}
+.logo .wn{font:600 25px/1 "Source Serif 4",serif;color:var(--crimson-ink)}.logo .wn i{font-style:normal;color:var(--ink);font-weight:400}.logo .wn em{font-style:italic;font-weight:400}
+.logo .tl{font:600 9.5px "Source Sans 3";letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-top:4px}
+.menu{display:flex;gap:30px;font:600 13px "Source Sans 3";letter-spacing:.16em;text-transform:uppercase}
+.menu a{color:var(--ink);text-decoration:none;padding:6px 0;background:linear-gradient(var(--crimson-ink),var(--crimson-ink)) 0 100%/0 2px no-repeat;transition:background-size .25s}
+.menu a:hover,.menu a[aria-current="page"]{background-size:100% 2px}
+.right{display:flex;gap:14px;align-items:center}
+.lang{display:flex;gap:6px}
+.lang button{border:0;background:none;padding:6px;cursor:pointer;border-radius:4px;line-height:0;min-width:44px;min-height:40px;display:grid;place-items:center}
+.lang button svg{width:30px;height:20px;border-radius:2px;box-shadow:0 0 0 1px var(--line);opacity:.6;transition:opacity .2s,transform .2s}
+.lang button:hover svg{opacity:.85;filter:none}
+.lang button[aria-pressed="true"] svg{opacity:1;filter:none;box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--crimson-ink);transform:translateY(-1px)}
+.btn{display:inline-block;background:var(--crimson);color:var(--on-crimson);font:700 15px "Source Sans 3";padding:12px 18px;border-radius:3px;border:0;cursor:pointer;text-decoration:none;transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn:active{transform:translateY(1px)}
+/* hero */
+.hero{margin:22px auto 0;max-width:1312px;height:780px;position:relative;background:var(--ground);overflow:hidden;border-radius:2px}
+.hero svg.art{position:absolute;inset:0;width:100%;height:100%}
+.corner{position:absolute;top:22px;font:600 12px "Source Sans 3";letter-spacing:.2em;color:var(--on-crimson)}
+.panel{position:absolute;left:50%;top:124px;transform:translateX(-50%);width:600px;height:656px;background:var(--bg);border-radius:300px 300px 0 0;padding:92px 46px 0;text-align:center}
+.mark{font:600 12px "Source Sans 3";letter-spacing:.2em;color:var(--crimson-ink);text-transform:uppercase}
+h1{font:400 42px/1.08 "Source Serif 4",serif;margin:12px 0 12px;letter-spacing:-.01em;text-wrap:balance}
+h1 i,h2 i{color:var(--crimson-ink)}
+.sub{font-size:16px;color:var(--soft);margin:0 auto 18px;max-width:46ch}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.box{background:var(--paper);border:1px solid var(--crimson);border-radius:4px;text-align:left;padding:14px;position:relative;box-shadow:0 0 0 4px var(--bg),0 0 0 5px color-mix(in srgb,var(--crimson) 45%,transparent),0 18px 40px -22px rgba(32,24,24,.45)}
+.box::before,.box::after{content:"✦";position:absolute;top:-11px;font-size:13px;color:var(--crimson-ink);background:var(--bg);padding:0 4px;line-height:1}
+.box::before{left:14px}.box::after{right:14px}
+.boxhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.boxtitle{font:italic 400 18px "Source Serif 4",serif;color:var(--ink)}
+.switch{display:inline-flex;border:1px solid var(--crimson-ink);border-radius:20px;position:relative;padding:2px}
+.switch .thumb{position:absolute;top:2px;bottom:2px;left:2px;width:0;border-radius:20px;background:var(--crimson);transition:transform .28s cubic-bezier(.2,.8,.2,1),width .28s cubic-bezier(.2,.8,.2,1)}
+.switch button{position:relative;border:0;background:none;padding:5px 12px;font:700 13px "Source Sans 3";color:var(--crimson-ink);cursor:pointer;border-radius:20px;transition:color .2s}
+.switch button[aria-pressed="true"]{color:var(--on-crimson)}
+.no-thumb .switch button[aria-pressed="true"]{background:var(--crimson)}
+.field{position:relative}
+textarea{display:block;width:100%;border:1px solid var(--line);border-radius:3px;padding:12px 62px 12px 14px;font:17px/1.5 "Courier Prime",monospace;min-height:96px;background:var(--well);color:var(--ink);resize:vertical;transition:border-color .2s,box-shadow .2s}
+textarea:focus{outline:none;border-color:var(--crimson);box-shadow:0 0 0 3px color-mix(in srgb,var(--crimson) 18%,transparent)}
+.ghost{position:absolute;left:15px;top:13px;right:40px;font:17px/1.5 "Courier Prime",monospace;color:var(--soft);pointer-events:none;opacity:.8}
+.ghost::after{content:"";display:inline-block;width:2px;height:1.05em;background:var(--crimson-ink);margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+#status.live{display:flex;align-items:center;gap:7px;color:var(--ink)}
+#status.live::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--crimson-ink);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.3}}
+.clear{position:absolute;right:22px;top:8px;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--soft);font-size:18px;line-height:1;cursor:pointer}
+.clear:hover{color:var(--crimson-ink);border-color:var(--crimson-ink)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-size:13px;color:var(--soft)}
+.row .btn{padding:10px 16px;font-size:14px;flex:none}
+.btn.go span:last-child{display:inline-block;transition:transform .2s}.btn.go:hover span:last-child{transform:translateX(3px)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center}
+.try{font:600 12px "Source Sans 3";letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-right:2px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:3px 10px 3px 4px;font-size:13px;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,transform .15s}
+.chip:hover{border-color:var(--crimson-ink);transform:translateY(-1px)}
+.chip i{font:normal 700 10px "Source Sans 3";letter-spacing:.06em;background:var(--crimson);color:var(--on-crimson);border-radius:10px;padding:2px 6px}
+.chip i.ro{background:none;color:var(--crimson-ink);border:1px solid var(--crimson-ink)}
+/* songs */
+.songs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.song{background:var(--paper);border:1px solid var(--crimson);border-top:4px solid var(--crimson);padding:14px 16px;text-align:left;cursor:pointer;outline:1px solid color-mix(in srgb,var(--crimson) 30%,transparent);outline-offset:-6px;transition:transform .15s,box-shadow .15s}
+.song:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.song b{display:block;font:700 18px "Courier Prime",monospace;color:var(--ink)}.song span{display:block;font:italic 16px "Source Serif 4",serif;color:var(--crimson-ink);margin:2px 0 6px}.song small{display:block;font-size:13px;color:var(--soft)}
+/* sections */
+section.block{padding:80px 0 30px}
+h2{font:400 40px/1.1 "Source Serif 4",serif;margin:0 0 10px;text-wrap:balance}
+.lede{color:var(--soft);max-width:62ch;margin:0 0 18px}
+.results{display:grid;grid-template-columns:1fr 360px;gap:36px;align-items:start}
+.detect{display:inline-flex;gap:8px;align-items:center;font:600 14px "Source Sans 3";color:var(--crimson-ink);border:1px solid var(--crimson-ink);padding:6px 10px;border-radius:3px;margin:4px 0 18px}
+.detect.warn{background:var(--crimson);color:var(--on-crimson);border-color:var(--crimson)}
+.detect button{border:0;background:none;text-decoration:underline;cursor:pointer;font-weight:700;color:inherit;padding:0}
+.mt{border-top:2px solid var(--crimson);background:var(--paper);padding:12px 16px;font:19px "Courier Prime",monospace;margin-bottom:26px;outline:1px solid color-mix(in srgb,var(--crimson) 25%,transparent);outline-offset:-5px}
+.mt small{display:block;font:600 12px "Source Sans 3";letter-spacing:.14em;color:var(--crimson-ink);text-transform:uppercase}
+.mt.none{font:15px "Source Sans 3";color:var(--soft)}
+.known{background:var(--paper);border:1px solid var(--crimson);border-left:6px solid var(--crimson);padding:12px 16px;margin:0 0 16px}
+.known small{display:block;font:600 12px "Source Sans 3";letter-spacing:.14em;text-transform:uppercase;color:var(--crimson-ink)}
+.known ul{list-style:none;margin:6px 0;padding:0}.known li{margin:4px 0;font-size:16px}
+.known li b{font:700 17px "Courier Prime",monospace}.known li span{font:italic 18px "Source Serif 4",serif;color:var(--crimson-ink)}
+.known li em{font-style:normal;font-size:13px;color:var(--soft)}.known li a{font-size:13px}
+.known p{margin:4px 0 0;font-size:13px;color:var(--soft)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:26px 12px}
+.c{background:var(--paper);border:1px solid var(--crimson);min-height:86px;padding:12px;position:relative;outline:1px solid color-mix(in srgb,var(--crimson) 35%,transparent);outline-offset:-5px;text-align:left;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.c:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.c[aria-pressed="true"]{border-width:2px;padding:11px}
+.c b{font:700 17px "Courier Prime",monospace;display:block;word-break:break-word}.c span.g{font:15px "Courier Prime",monospace;color:var(--soft);display:block;word-break:break-word}
+.tag{position:absolute;top:-12px;right:10px;font:700 10px "Source Sans 3";letter-spacing:.08em;padding:3px 8px;border-radius:2px 2px 0 0;background:var(--crimson);color:var(--on-crimson);text-transform:uppercase}
+.tag.q{background:var(--bg);color:var(--crimson-ink);border:1px solid var(--crimson);border-bottom:0}
+.tag.r{background:var(--bg);color:var(--soft);border:1px dashed var(--soft);border-bottom:0}
+.stamp{color:var(--crimson-ink);border:2px solid var(--crimson-ink);font:700 10px "Source Sans 3";letter-spacing:.12em;padding:1px 5px;transform:rotate(-6deg);display:inline-block;margin-top:6px}
+.card{background:var(--paper);border:1px solid var(--crimson);border-top:4px solid var(--crimson);padding:16px 18px;outline:1px solid color-mix(in srgb,var(--crimson) 30%,transparent);outline-offset:-6px;box-shadow:var(--shadow);position:sticky;top:92px}
+.card .w{font:700 30px "Courier Prime",monospace;display:block;margin:2px 0 4px;word-break:break-word}
+.card p{margin:6px 0;font-size:15px;color:var(--soft)}
+.card ul{list-style:none;padding:0;margin:8px 0;font:15px "Courier Prime",monospace}
+.card li{display:flex;gap:6px}.card li .d{flex:1;border-bottom:1px dotted var(--soft);margin-bottom:5px}.card li.pick{color:var(--crimson-ink);font-weight:700}
+.empty{color:var(--soft)}
+.mix{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:40px}
+.mix>div{padding:18px 20px 0 0}.mix>div+div{padding-left:20px;border-left:1px solid var(--line)}
+.mix h3{font:600 18px "Source Serif 4",serif;margin:0 0 6px}.mix p{margin:0;color:var(--soft);font-size:15px}
+.same{margin-top:26px;font-size:15px}
+.same table{border-collapse:collapse;width:100%;max-width:760px}
+.same th,.same td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);color:var(--ink)}.same th{font:600 12px "Source Sans 3";letter-spacing:.12em;text-transform:uppercase;color:var(--crimson-ink)}
+.same td:first-child{font:700 16px "Courier Prime",monospace}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.about p{margin:0 0 12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:30px 0 10px;border-top:1px solid var(--line);margin-top:30px}
+.stats b{font:400 56px/1 "Source Serif 4",serif;color:var(--crimson-ink);display:block;margin-bottom:8px}.stats p{margin:0;color:var(--soft);max-width:30ch;font-size:15px}
+footer{border-top:1px solid var(--line);margin-top:60px;padding:20px 0 40px;font-size:13px;color:var(--soft)}
+footer a{color:var(--soft);display:inline-block;padding:6px 2px}
+/* inner pages */
+.page{display:none}.page.on{display:block}
+.doc{max-width:860px;padding:60px 0 20px}
+.doc h2{margin-top:36px}.doc h2:first-child{margin-top:0}
+.doc h3{font:600 20px "Source Serif 4",serif;margin:26px 0 6px}
+.doc p,.doc li{color:var(--ink)}
+.doc table{border-collapse:collapse;width:100%;margin:10px 0 6px;font-size:15px}
+.doc th,.doc td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;color:var(--ink)}
+.doc th{font:600 12px "Source Sans 3";letter-spacing:.1em;text-transform:uppercase;color:var(--crimson-ink)}
+.doc tr.ours td{font-weight:700;color:var(--crimson-ink)}
+.doc .note{font-size:14px;color:var(--soft)}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.person{background:var(--paper);border:1px solid var(--crimson);border-top:4px solid var(--crimson);padding:18px;outline:1px solid color-mix(in srgb,var(--crimson) 30%,transparent);outline-offset:-6px}
+.person{display:flex;flex-direction:column;gap:6px;transition:transform .15s,box-shadow .15s}.person:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.person .num{font:italic 400 34px/1 "Source Serif 4",serif;color:var(--crimson-ink)}
+.person b{font:600 21px "Source Serif 4",serif;display:block;color:var(--ink)}
+.person .role{font:700 12px "Source Sans 3";letter-spacing:.14em;text-transform:uppercase;color:var(--crimson-ink)}
+.person p{margin:4px 0 8px;font-size:15px;color:var(--soft);flex:1}
+.person .place{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:8px}.person .place::before{content:"◆ ";color:var(--crimson-ink);font-size:10px;vertical-align:2px}
+.motto{border-top:4px solid var(--crimson);background:var(--paper);padding:20px 24px;margin:28px 0 10px;outline:1px solid color-mix(in srgb,var(--crimson) 30%,transparent);outline-offset:-6px}
+.motto h3{font:400 28px/1.15 "Source Serif 4",serif;margin:0 0 8px;text-transform:none}.motto h3 i{color:var(--crimson-ink)}.motto p{margin:0;color:var(--soft)}
+.tablewrap{overflow-x:auto}
+/* shared engraved pieces */
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.orn{display:flex;justify-content:center;color:var(--crimson-ink);margin:56px 0 8px}.orn svg{width:240px;height:20px}
+.eyebrow{display:inline-block;font:700 12px "Source Sans 3";letter-spacing:.18em;text-transform:uppercase;color:var(--crimson-ink);margin-bottom:8px}
+.sech{text-align:center;margin:8px 0 26px}
+/* inner-page banner: a quieter version of the home hero */
+.phero{position:relative;max-width:1312px;height:300px;margin:22px auto 0;background:var(--ground);border-radius:2px;overflow:hidden;color:var(--on-crimson)}
+.phero .band{position:absolute;inset:0;width:100%;height:100%}
+.ptab{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:480px;height:228px;background:var(--bg);border-radius:240px 240px 0 0;padding:64px 40px 0;text-align:center;color:var(--ink)}
+.ptab h2{margin:6px 0 8px}.ptab p{margin:0 auto;max-width:36ch;font-size:15px;color:var(--soft)}
+/* team */
+.teamtop{display:grid;grid-template-columns:7fr 5fr;gap:28px;align-items:stretch;margin:44px 0 10px}
+.photo{margin:0;background:var(--paper);border:1px solid var(--crimson);border-top:4px solid var(--crimson);padding:10px;outline:1px solid color-mix(in srgb,var(--crimson) 30%,transparent);outline-offset:-6px;box-shadow:var(--shadow)}
+.photo img{display:block;width:100%;height:100%;max-height:440px;object-fit:cover;object-position:50% 35%}
+.teamtop .motto{margin:0;display:flex;flex-direction:column;justify-content:center}
+.places{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.places span{font:600 13px "Source Sans 3";border:1px solid var(--crimson-ink);color:var(--crimson-ink);border-radius:20px;padding:4px 12px}
+/* method */
+.steps{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:none}
+.steps li{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--crimson);padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px}
+.steps .num{font:italic 400 30px/1 "Source Serif 4",serif;color:var(--crimson-ink)}
+.steps b{font:600 18px "Source Serif 4",serif;color:var(--ink)}.steps p{margin:0;font-size:14.5px;color:var(--soft)}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tcard{background:var(--paper);border:1px solid var(--crimson);border-top:4px solid var(--crimson);padding:16px 18px;outline:1px solid color-mix(in srgb,var(--crimson) 25%,transparent);outline-offset:-6px;min-width:0}
+.tcard.wide{grid-column:1/-1}
+.tcard h3{font:600 17px "Source Serif 4",serif;margin:0 0 8px;color:var(--ink)}
+.tcard table{border-collapse:collapse;width:100%;font-size:15px}
+.tcard th,.tcard td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;color:var(--ink)}
+.tcard th{font:600 11px "Source Sans 3";letter-spacing:.1em;text-transform:uppercase;color:var(--crimson-ink)}
+.tcard tr.ours td{font-weight:700;color:var(--crimson-ink);background:color-mix(in srgb,var(--crimson) 7%,transparent)}
+.tcard .note{font-size:13.5px;color:var(--soft);margin:8px 0 0}
+.limits{margin:26px 0 10px;border-left:6px solid var(--crimson);background:var(--paper);padding:16px 22px}
+.limits h3{font:600 20px "Source Serif 4",serif;margin:0 0 6px}.limits li{margin:4px 0;color:var(--ink)}
+/* credits */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:44px 0 10px}
+.ccard{background:var(--paper);border:1px solid var(--crimson);border-top:4px solid var(--crimson);padding:18px 22px;outline:1px solid color-mix(in srgb,var(--crimson) 25%,transparent);outline-offset:-6px}
+.ccard.wide{grid-column:1/-1}.ccard h3{font:600 20px "Source Serif 4",serif;margin:0 0 6px}.ccard li{margin:6px 0;color:var(--ink)}.ccard ul{padding-left:20px;margin:0}
+/* home: crimson "about" band */
+section.aboutband{background:var(--ground);color:var(--on-crimson);padding:56px 56px 44px;margin-top:60px;border-radius:2px;position:relative;overflow:hidden}
+.aboutband .eyebrow,.aboutband h2 i{color:var(--on-crimson)}
+.aboutband h2{color:var(--on-crimson)}
+.aboutband p{color:color-mix(in srgb,var(--on-crimson) 88%,transparent)}
+.aboutband .stats{border-top-color:color-mix(in srgb,var(--on-crimson) 35%,transparent)}
+.aboutband .stats b{color:var(--on-crimson)}.aboutband .stats p{color:color-mix(in srgb,var(--on-crimson) 82%,transparent)}
+.aboutband .bstar{position:absolute;color:var(--on-crimson);opacity:.8}
+.mix>div h3{color:var(--crimson-ink)}
+@media (max-width:1100px){.steps{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){
+ .phero{height:250px;margin:12px 16px 0}.ptab{width:calc(100% - 28px);height:196px;padding:48px 18px 0;border-radius:999px 999px 0 0}
+ .teamtop,.tgrid,.cgrid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}
+ .photo img{height:auto;max-height:none;aspect-ratio:1600/901}
+ section.aboutband{padding:36px 22px 28px}
+}
+@media (max-width:600px){.steps{grid-template-columns:1fr}.ptab p{display:none}.ptab{height:150px;padding-top:40px}.phero{height:200px}}
+@media (max-width:1100px){.wrap{padding:0 32px}.hero{margin:16px 32px 0}.results{grid-template-columns:1fr}.card{position:static}}
+@media (max-width:900px){
+ .menu{display:none}
+ .hero{height:auto;margin:12px 16px 0;padding:0 0 12px}
+ .hero svg.art{position:relative;display:block;width:100%;height:auto;aspect-ratio:1312/780}
+ .panel{position:relative;left:auto;top:auto;transform:none;width:auto;height:auto;margin:-18% 10px 0;border-radius:999px 999px 4px 4px;padding:70px 16px 16px}
+ .corner{top:10px;font-size:10px}
+ h1{font-size:34px}h2{font-size:30px}
+ .songs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .mix,.about,.stats,.team{grid-template-columns:1fr}.mix>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+ .stats b{font-size:44px}
+}
+@media (max-width:600px){.wrap{padding:0 16px}.nav .wrap{height:60px}.logo{font-size:22px}.right .btn{display:none}.hero{margin:8px 16px 0}.row{flex-direction:column;align-items:stretch}.row .btn{text-align:center}.switch button{padding:7px 10px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.songs{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.menu-sm{display:none}
+@media (max-width:900px){.menu-sm{display:flex;gap:6px;overflow-x:auto;padding:2px 10px;border-bottom:1px solid var(--line);font:600 12px "Source Sans 3";letter-spacing:.12em;text-transform:uppercase}.menu-sm a{color:var(--ink);text-decoration:none;white-space:nowrap;padding:12px 6px;min-height:44px;display:inline-flex;align-items:center}.menu-sm a[aria-current="page"]{color:var(--crimson-ink);box-shadow:inset 0 -2px var(--crimson-ink)}}
+/* feature tiles under the hero */
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:36px 0 0}
+.feat{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--crimson);padding:18px 18px 20px;position:relative}
+.ficon{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;color:var(--crimson-ink);background:var(--bg);box-shadow:0 0 0 1.5px var(--crimson),0 0 0 5px var(--paper),0 0 0 6px color-mix(in srgb,var(--crimson) 40%,transparent);margin:2px 0 12px}
+.ficon svg{width:30px;height:30px}
+.feat h3{font:600 18px "Source Serif 4",serif;margin:0 0 4px;color:var(--ink)}.feat p{margin:0;font-size:14.5px;color:var(--soft)}
+/* legend for the card labels */
+.legend{list-style:none;padding:0;margin:4px 0 16px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:var(--soft)}
+.legend li{display:flex;align-items:center;gap:7px}
+.legend .tag.lg{position:static;border-radius:2px;padding:3px 7px}.legend .tag.q.lg,.legend .tag.r.lg{border-bottom:inherit}
+.legend .tag.q.lg{border:1px solid var(--crimson)}.legend .tag.r.lg{border:1px dashed var(--soft)}
+.legend .lgs{margin:0;transform:rotate(-4deg)}
+/* pictograms */
+.mixi{width:26px;height:26px;color:var(--crimson-ink);display:block;margin-bottom:8px}
+.song{position:relative}.song .snote{position:absolute;top:10px;right:10px;width:20px;height:20px;color:var(--crimson-ink);opacity:.85}
+.known .knote{width:20px;height:20px;color:var(--crimson-ink);vertical-align:-4px;margin-right:6px}
+/* phone: jump from the box to the results */
+.jump{display:none}
+@media (max-width:900px){textarea{padding-right:50px}.clear{right:10px}.row .btn.go{display:none}.jump{display:block;margin-top:10px;text-align:center;font:700 14px "Source Sans 3";color:var(--crimson-ink);border:1.5px solid var(--crimson-ink);border-radius:3px;padding:11px;text-decoration:none}.features{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.features{grid-template-columns:1fr}.logo .tl{display:none}.logo .wn{font-size:22px}.logo .emblem{width:28px;height:31px}}
+/* why it matters: a type-led statement that lights up word by word, three specimen words, one fact line */
+section.why2{min-height:min(700px,86vh);display:flex;flex-direction:column;justify-content:center}
+.why2grid{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center}
+.statement{font:400 clamp(30px,3.6vw,50px)/1.18 "Source Serif 4",serif;letter-spacing:-.01em;margin:10px 0 0;color:var(--on-crimson)}
+.statement .wd{transition:opacity .35s ease;opacity:.28}
+.statement .wd.lit{opacity:1}
+.statement i{color:var(--on-crimson)!important;font-style:italic;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;text-decoration-color:color-mix(in srgb,var(--on-crimson) 45%,transparent)}
+.specimens{display:grid;gap:14px}
+.spec{background:var(--bg);color:var(--ink);padding:14px 18px 12px;border-radius:2px;box-shadow:0 0 0 4px var(--ground),0 0 0 5px color-mix(in srgb,var(--on-crimson) 50%,transparent);display:grid;grid-template-columns:132px 1fr;column-gap:14px;align-items:center;transition:transform .2s}
+.spec:hover{transform:translateY(-2px)}
+.spec .sw{grid-row:1/3;font:700 26px "Courier Prime",monospace;color:var(--ink)}
+.spec p{margin:2px 0;display:flex;align-items:center;gap:8px;font-size:15px;color:var(--ink)!important}
+.spec .tag.lg{position:static;min-width:42px;text-align:center}
+.factline{margin:40px 0 0;padding:18px 0 0;border-top:1px solid color-mix(in srgb,var(--on-crimson) 30%,transparent);display:grid;gap:10px}
+.factline>div{display:flex;gap:14px;align-items:center}.factline dt{margin:0}.factline dd{margin:0;font-size:15px;color:color-mix(in srgb,var(--on-crimson) 88%,transparent)}
+.factline .tag.lg{position:static;min-width:46px;text-align:center}
+.factline .tag.lg{background:var(--on-crimson);color:var(--ground)!important;border:1px solid var(--on-crimson)}
+.factline .tag.q.lg{background:transparent;color:var(--on-crimson)!important;border:1px solid var(--on-crimson)}
+@media (max-width:900px){section.why2{min-height:0}.why2grid{grid-template-columns:1fr;gap:26px}.spec{grid-template-columns:1fr}.spec .sw{grid-row:auto;margin-bottom:4px}.factline>div{align-items:flex-start}}
+@media (prefers-reduced-motion:reduce){.statement .wd{opacity:1}}/* fun facts */
+.mix{gap:16px;border-top:0;margin-top:22px}
+.mix>.fact,.mix>.fact+.fact{padding:18px 20px;border-left:0}
+.fact{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--crimson);padding:18px 20px}
+.fact h3{font:600 18px "Source Serif 4",serif;margin:0 0 6px;color:var(--crimson-ink)}.fact p{margin:0;color:var(--soft);font-size:15px}
+.facts2{display:grid;grid-template-columns:3fr 2fr;gap:16px;margin-top:22px;align-items:start}
+.factcol{display:grid;gap:16px}
+.facts2 .same{margin:0}.facts2 .same p{margin-bottom:8px}.facts2 .same table{max-width:none}
+.tell .cue{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.tell .cue .tag.lg{position:static;flex:none;margin-top:2px}
+.tell .cue p{color:var(--ink)}.tell .small{font-size:13.5px;color:var(--soft);margin-top:8px}
+.subh{display:flex;align-items:center;gap:10px;font:400 26px/1.2 "Source Serif 4",serif;margin:40px 0 6px}.subh svg{width:26px;height:26px;color:var(--crimson-ink);flex:none}.subh i{color:var(--crimson-ink)}
+/* results charts (colours validated for colour-blind readers in both themes) */
+:root{--c-ours:#B3122B;--c-base:#3E63B8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c-ours:#E2506A;--c-base:#6E8FD8}}
+:root[data-theme="dark"]{--c-ours:#E2506A;--c-base:#6E8FD8}
+#results-sec .stats{border-top:0;margin-top:0;padding-top:6px}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+.chart{margin:0;min-width:0;background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--crimson);padding:16px 18px 18px}
+.chart h3{font:600 18px "Source Serif 4",serif;margin:0 0 2px;color:var(--ink)}.chart .sub{margin:0 0 10px;font-size:13.5px;color:var(--soft)}
+.legend2{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--soft);margin:0 0 10px;padding:0;list-style:none}
+.legend2 li{display:flex;align-items:center;gap:6px}.legend2 i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.brow{display:grid;grid-template-columns:150px 1fr;gap:4px 12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.brow:last-of-type{border-bottom:0}
+.brow .lab{font-size:14px;color:var(--ink);line-height:1.25}
+.bars{display:flex;flex-direction:column;gap:2px}
+.bar{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 52px;align-items:center;gap:8px;height:16px;cursor:default}
+.bar .track{display:block;height:12px;background:color-mix(in srgb,var(--line) 45%,transparent);border-radius:0 4px 4px 0;overflow:hidden}
+.bar span.fill{display:block;height:12px;border-radius:0 4px 4px 0;min-width:3px;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.bar b{text-align:right}
+.bar.ours span.fill{background:var(--c-ours)}.bar.base span.fill{background:var(--c-base)}
+.bar b{font:600 13px "Source Sans 3";color:var(--ink);white-space:nowrap}.bar.base b{font-weight:400;color:var(--soft)}
+.bar:hover span.fill{filter:brightness(1.12)}
+.more{margin:16px 0 0;text-align:right}.more a{font-weight:700}
+@media (max-width:900px){.facts2,.charts{grid-template-columns:1fr}.brow{grid-template-columns:110px 1fr}.mix>.fact+.fact{border-top:4px solid var(--crimson);margin-top:0;padding:18px 20px}}
+/* page titles are h1 on the inner pages */
+.ptab h1{font:400 40px/1.1 "Source Serif 4",serif;margin:6px 0 8px;letter-spacing:-.01em}.ptab h1 i{color:var(--crimson-ink)}
+h1[tabindex="-1"]:focus{outline:none}
+@media (max-width:900px){.ptab h1{font-size:30px}}
+/* visible keyboard focus everywhere, including cards that draw a decorative outline */
+.c:focus-visible,.song:focus-visible,.chip:focus-visible,.switch button:focus-visible,.lang button:focus-visible,.clear:focus-visible,.btn:focus-visible,.jump:focus-visible,.menu a:focus-visible,.menu-sm a:focus-visible,footer a:focus-visible{outline:3px solid var(--crimson-ink)!important;outline-offset:3px!important}
+.clear{width:34px;height:34px}.chip{min-height:30px}
+</style>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+ <defs>
+  <symbol id="s-star" viewBox="-8 -8 16 16"><path d="M0-7 1.6-1.6 7 0 1.6 1.6 0 7-1.6 1.6-7 0-1.6-1.6Z" fill="currentColor"/></symbol>
+  <symbol id="s-flower" viewBox="-12 -12 24 24"><g fill="none" stroke="currentColor" stroke-width="1.2"><circle r="3.5"/><path d="M0-4c-4-8 4-8 0 0M4 0c8-4 8 4 0 0M0 4c4 8-4 8 0 0M-4 0c-8 4-8-4 0 0"/></g></symbol>
+  <symbol id="s-band" viewBox="0 0 1312 300">
+   <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+    <path d="M150 70a28 28 0 1 0 22 46 23 23 0 1 1-22-46Z"/>
+    <path d="M1162 70a28 28 0 1 1-22 46 23 23 0 1 0 22-46Z"/>
+    <path d="M404 300A252 252 0 0 1 908 300" stroke-width="2.2"/>
+    <path d="M392 300A264 264 0 0 1 920 300" stroke-width="1"/>
+    <path d="M0 300c60-14 120-14 180 0M1132 300c60-14 120-14 180 0" stroke-width="1"/>
+   </g>
+   <g>
+    <use href="#s-star" x="72" y="40" width="12" height="12"/><use href="#s-star" x="260" y="110" width="10" height="10"/><use href="#s-star" x="330" y="34" width="12" height="12"/>
+    <use href="#s-star" x="460" y="20" width="9" height="9"/><use href="#s-star" x="840" y="22" width="9" height="9"/><use href="#s-star" x="975" y="38" width="12" height="12"/>
+    <use href="#s-star" x="1060" y="120" width="10" height="10"/><use href="#s-star" x="1230" y="44" width="12" height="12"/><use href="#s-star" x="40" y="180" width="9" height="9"/><use href="#s-star" x="1270" y="190" width="9" height="9"/>
+    <use href="#s-flower" x="200" y="262" width="20" height="20"/><use href="#s-flower" x="280" y="272" width="16" height="16"/><use href="#s-flower" x="110" y="270" width="16" height="16"/>
+    <use href="#s-flower" x="1092" y="262" width="20" height="20"/><use href="#s-flower" x="1016" y="272" width="16" height="16"/><use href="#s-flower" x="1186" y="270" width="16" height="16"/>
+   </g>
+  </symbol>
+  <symbol id="s-note" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5.5l11-2.2V16"/><path d="M9 9.2l11-2.2"/><ellipse cx="6.2" cy="18" rx="2.9" ry="2.3"/><ellipse cx="17.2" cy="16" rx="2.9" ry="2.3"/></g></symbol>
+  <symbol id="s-bubbles" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 3.5h10.5a2 2 0 0 1 2 2V11a2 2 0 0 1-2 2H8.2L5 15.8V13H3a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2z"/><path d="M17.5 8H21a2 2 0 0 1 2 2v5.5a2 2 0 0 1-2 2h-1.5v2.8l-3-2.8H11a2 2 0 0 1-2-2V15"/><path d="M5 7h6.5M5 9.6h4" stroke-linecap="round"/></g></symbol>
+  <symbol id="s-cards" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="2.5" y="6.5" width="12" height="15" rx="1.2"/><rect x="9.5" y="2.5" width="12" height="15" rx="1.2" fill="var(--paper)"/><path d="M12.5 7h6M12.5 10h4.5M12.5 13h5.5" stroke-linecap="round"/></g></symbol>
+  <symbol id="s-trap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.5H1.8z"/><path d="M12 9.5v5"/><path d="M12 17.6v.2"/></g></symbol>
+  <symbol id="s-slang" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M7 10.5h.2M12 10.5h.2M17 10.5h.2" stroke-width="2.4" stroke-linecap="round"/></g></symbol>
+  <symbol id="s-logo" viewBox="0 0 40 44"><path d="M4 43V20A16 16 0 0 1 36 20V43Z" fill="var(--crimson)"/><path d="M8.5 43V20.5A11.5 11.5 0 0 1 31.5 20.5V43" fill="none" stroke="var(--on-crimson)" stroke-width="1.1"/><path d="M20 3.4 21 6.3 23.9 7.3 21 8.3 20 11.2 19 8.3 16.1 7.3 19 6.3Z" fill="var(--on-crimson)"/><text x="20" y="34" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="15" fill="var(--on-crimson)">z·l</text></symbol>
+  <symbol id="s-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="1.6"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.6"/></g></symbol>
+  <symbol id="s-orn" viewBox="0 0 240 20"><g fill="none" stroke="currentColor" stroke-width="1"><path d="M0 10h100M140 10h100"/><path d="M104 10h6M130 10h6"/></g><use href="#s-star" x="112" y="2" width="16" height="16"/></symbol>
+ </defs>
+</svg>
+<a class="skip" href="#main" data-i18n="skip">Skip to the translator</a>
+<header class="nav">
+ <div class="wrap">
+  <a class="logo" href="#translator" aria-label="Zbor · Lav, home">
+   <svg class="emblem" aria-hidden="true" viewBox="0 0 40 44"><use href="#s-logo"/></svg>
+   <span class="wm"><span class="wn">Zbor <i>·</i> <em>Lav</em></span><span class="tl" data-i18n="tagline">Aromanian &amp; Romani, word by word</span></span>
+  </a>
+  <nav class="menu" aria-label="Main">
+   <a href="#translator" data-i18n="m1">Translator</a><a href="#team" data-i18n="m2">Team</a><a href="#method" data-i18n="m3">Method</a><a href="#credits" data-i18n="m4">Credits</a>
+  </nav>
+  <div class="right">
+   <div class="lang" role="group" aria-label="Site language / Limba site-ului"><button type="button" data-lang="en" aria-pressed="true" aria-label="English" title="English"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="ukc"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#ukc)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg></button><button type="button" data-lang="ro" aria-pressed="false" aria-label="Română" title="Română"><svg viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#002B7F"/><rect x="1" width="1" height="2" fill="#FCD116"/><rect x="2" width="1" height="2" fill="#CE1126"/></svg></button></div>
+   <a class="btn" href="#tool" data-i18n="try">Try it</a>
+  </div>
+ </div>
+ <nav class="menu-sm" aria-label="Pages"><a href="#translator" data-i18n="m1">Translator</a><a href="#team" data-i18n="m2">Team</a><a href="#method" data-i18n="m3">Method</a><a href="#credits" data-i18n="m4">Credits</a></nav>
+</header>
+
+<main id="main">
+<!-- ============ HOME ============ -->
+<div class="page on" id="p-translator">
+<section class="hero" aria-labelledby="h1">
+<svg class="art" viewBox="0 -40 1312 780" preserveAspectRatio="xMidYMid slice" fill="none" stroke="var(--on-crimson)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+ <defs>
+  <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="6" stroke="var(--on-crimson)" stroke-width="1"/></pattern>
+  <pattern id="hatch2" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)"><line x1="0" y1="0" x2="0" y2="4" stroke="var(--on-crimson)" stroke-width=".8"/></pattern>
+  <pattern id="stone" width="14" height="8" patternUnits="userSpaceOnUse"><path d="M0 8h14M7 0v8M0 4h7" stroke="var(--on-crimson)" stroke-width=".7"/></pattern>
+  <g id="star"><path d="M0-7 1.6-1.6 7 0 1.6 1.6 0 7-1.6 1.6-7 0-1.6-1.6Z" fill="var(--on-crimson)" stroke="none"/></g>
+  <g id="flower" stroke-width="1.2"><circle r="3.5"/><path d="M0-4c-4-8 4-8 0 0M4 0c8-4 8 4 0 0M0 4c4 8-4 8 0 0M-4 0c-8 4-8-4 0 0"/></g>
+  <g id="leaf" stroke-width="1.1"><path d="M0 0c6-10 18-10 22-2-8 6-16 8-22 2Z" fill="var(--ground)"/><path d="M2 0 18-3"/></g>
+  <g id="sheep" stroke-width="1.6">
+   <path d="M0 40c-8-18 6-34 22-30 6-14 30-14 36 0 16-4 30 12 22 30 8 16-8 30-22 24-8 12-30 12-38 0C4 70-8 54 0 40Z" fill="var(--ground)" stroke="none"/>
+   <path d="M18 66v26M34 70v24M56 70v24M70 66v26"/><path d="M14 92h8M30 94h8M52 94h8M66 92h8" stroke-width="2"/>
+   <path d="M0 40c-8-18 6-34 22-30 6-14 30-14 36 0 16-4 30 12 22 30 8 16-8 30-22 24-8 12-30 12-38 0C4 70-8 54 0 40Z" fill="url(#hatch)"/>
+   <path d="M6 26c4-4 10-4 12 0M30 14c4-4 10-4 12 0M54 22c4-4 10-4 12 0M14 54c4-4 10-4 12 0M44 58c4-4 10-4 12 0" stroke-width="1"/>
+   <path d="M80 34c10-6 26 0 26 12s-12 16-22 10" fill="var(--ground)"/><path d="M86 34c-2-6 4-10 8-6" fill="var(--ground)"/><circle cx="96" cy="44" r="1.8" fill="var(--on-crimson)"/>
+  </g>
+  <g id="house" stroke-width="1.4"><path d="M0 24 22 6 44 24V50H0Z" fill="var(--ground)" stroke="none"/><path d="M-2 24 22 4 46 24Z" fill="url(#hatch2)"/><rect x="4" y="24" width="36" height="26" fill="url(#stone)"/></g>
+ </defs>
+ <path d="M150 92a34 34 0 1 0 26 56 28 28 0 1 1-26-56Z" fill="url(#hatch)" stroke-width="1.5"/>
+ <path d="M1162 92a34 34 0 1 1-26 56 28 28 0 1 0 26-56Z" fill="url(#hatch)" stroke-width="1.5"/>
+ <g id="stars"></g>
+ <!-- LEFT · Aromanian: the Pindus with snowcaps, a stone village, a shepherd and his flock -->
+ <path d="M0 400 70 290 120 340 190 230 260 320 330 260 360 300 360 740 0 740Z" fill="url(#hatch2)" stroke-width="1.6"/>
+ <g fill="var(--on-crimson)" stroke="var(--on-crimson)" stroke-width="1.2">
+  <path d="M70 290 52 318 61 312 70 321 79 311 88 320 98 318Z"/>
+  <path d="M190 230 164 270 175 262 186 274 198 262 210 273 221 270Z"/>
+  <path d="M330 260 301 285 311 279 322 289 333 279 349 285Z"/>
+ </g>
+ <path d="M0 450 80 395 160 425 250 380 350 430 360 425 360 740 0 740Z" fill="var(--ground)" stroke-width="1.6"/>
+ <use href="#house" transform="translate(95 382) scale(.9)"/>
+ <use href="#house" transform="translate(150 370)"/>
+ <path d="M182 382V366h5v14" stroke-width="1.4" fill="var(--ground)"/><path d="M185 362c-5-6 4-10-1-17 5 2 7 9 3 13" stroke-width="1"/>
+ <rect x="168" y="404" width="8" height="16" fill="var(--ground)" stroke-width="1.4"/>
+ <use href="#house" transform="translate(205 354) scale(.8)"/>
+ <rect x="213" y="378" width="6.4" height="6.4" fill="var(--ground)" stroke-width="1.2"/><rect x="118.4" y="409" width="7.2" height="7.2" fill="var(--ground)" stroke-width="1.2"/>
+ <g transform="translate(255 362) scale(.7)" stroke-width="1.6"><rect x="0" y="0" width="20" height="40" fill="var(--ground)" stroke="none"/><rect x="0" y="0" width="20" height="40" fill="url(#stone)"/><path d="M-4 0 10-18 24 0Z" fill="url(#hatch2)"/><path d="M10-32v14M5-26h10"/></g>
+ <path d="M0 520c80-30 200-30 360-10" stroke-width="1.2"/>
+ <use href="#sheep" transform="translate(22 528) scale(.6)"/>
+ <use href="#sheep" transform="translate(92 562) scale(.85)"/>
+ <g stroke-width="1.6" transform="translate(200 452)">
+  <path d="M12 26C0 28-8 70-14 150H38C32 70 24 28 12 26Z" fill="var(--ground)" stroke="none"/>
+  <path d="M4 150v24M20 150v24" /><path d="M0 174h9M16 174h9" stroke-width="2.2"/>
+  <path d="M12 26C0 28-8 70-14 150H38C32 70 24 28 12 26Z" fill="url(#hatch)"/>
+  <path d="M-6 80H32" stroke-width="1.2"/><path d="M8 34v40" stroke-width="1"/>
+  <circle cx="12" cy="18" r="8" fill="var(--ground)"/>
+  <path d="M3 12C2-1 22-1 21 12Z" fill="var(--ground)"/><path d="M3 12C2-1 22-1 21 12Z" fill="url(#hatch2)"/>
+  <path d="M26 50 47 64" stroke-width="2"/>
+  <path d="M48 178V36c0-18 24-18 24-2 0 9-9 12-13 6" stroke-width="2.2"/>
+ </g>
+ <use href="#sheep" transform="translate(-12 604) scale(1.1)"/>
+ <use href="#sheep" transform="translate(62 652) scale(.9)"/>
+ <g stroke-width="1.6" transform="translate(150 684) scale(.75)">
+  <path d="M0 20c10-8 50-8 60 0 4 10-2 22-10 22H8C0 42-4 30 0 20Z" fill="var(--ground)" stroke="none"/>
+  <path d="M12 42v18M24 42v18M44 42v18M54 40v20"/>
+  <path d="M0 20c10-8 50-8 60 0 4 10-2 22-10 22H8C0 42-4 30 0 20Z" fill="url(#hatch2)"/>
+  <path d="M58 18c6-14 20-16 26-6 4 8-2 16-12 16" fill="var(--ground)"/><path d="M70 6l4-10 4 10" fill="var(--ground)"/><circle cx="76" cy="16" r="1.6" fill="var(--on-crimson)"/>
+  <path d="M4 22c-12-6-14-18-8-24"/>
+ </g>
+ <!-- RIGHT · Romani: the 16-spoke chakra wheel, a violin, a coppersmith's cauldron over the fire -->
+ <g stroke-width="1.6" transform="translate(1122 300)">
+  <circle r="92"/><circle r="84"/><circle r="16" fill="url(#hatch)"/>
+  <g id="spokes"><path d="M0-16V-84"/><path d="M0 16V84"/><path d="M-16 0H-84"/><path d="M16 0H84"/></g>
+  <use href="#spokes" transform="rotate(22.5)"/><use href="#spokes" transform="rotate(45)"/><use href="#spokes" transform="rotate(67.5)"/>
+ </g>
+ <g stroke-width="1.5" transform="translate(1268 346) rotate(14) scale(.9)">
+  <path d="M0 0c-22 0-26 26-12 36-16 10-14 44 12 44s28-34 12-44C26 26 22 0 0 0Z" fill="var(--ground)" stroke="none"/>
+  <path d="M0 0c-22 0-26 26-12 36-16 10-14 44 12 44s28-34 12-44C26 26 22 0 0 0Z" fill="url(#hatch2)"/><path d="M0 0V-70M-4-70h8v-12h-8Z M-6 40h12"/><path d="M-5 20c-2 4-2 8 0 12M5 20c2 4 2 8 0 12" stroke-width="1"/>
+ </g>
+ <g stroke-width="1.6" transform="translate(1110 500) scale(.95)">
+  <path d="M-30 190 75-70M180 190 75-70" stroke-width="1.8"/><path d="M75-70v52" stroke-width="1.4"/>
+  <path d="M40 190c6-20 14-14 16-30 8 14 14 20 10 30M76 190c4-24 16-18 14-40 12 18 16 28 10 40M110 190c4-16 12-12 12-26 8 12 10 18 6 26" fill="var(--ground)"/>
+  <path d="M10 30c0-50 130-50 130 0"/>
+  <path d="M0 30h150c0 70-30 110-75 110S0 100 0 30Z" fill="var(--ground)" stroke="none"/>
+  <path d="M0 30h150c0 70-30 110-75 110S0 100 0 30Z" fill="url(#hatch)"/>
+  <path d="M-6 30h162" stroke-width="2.4"/><path d="M20 70c30 10 80 10 110 0" stroke-width="1"/>
+ </g>
+ <g id="vines" stroke-width="1.2"></g>
+ <path d="M346 740V384A310 310 0 0 1 966 384V740" stroke-width="2.4"/>
+ <path d="M334 740V384A322 322 0 0 1 978 384V740" stroke-width="1"/>
+</svg>
+<span class="corner" style="left:28px">AROMÂNĂ</span><span class="corner" style="right:28px">ROMANI</span>
+<div class="panel" id="tool">
+ <div class="mark" data-i18n="mark">Zbor · Lav · two words for “word”</div>
+ <h1 id="h1" data-i18n-html="h1">Two languages that <i>look</i> like Romanian. <i>Neither</i> is.</h1>
+ <p class="sub" data-i18n="sub">Paste a text in Aromanian or Romani. Zbor · Lav explains it word by word and flags the words Romanians usually get wrong.</p>
+ <div class="box">
+  <div class="boxhead">
+   <span class="boxtitle" data-i18n="boxtitle">Paste or type a sentence</span>
+   <div class="switch" role="group" aria-label="Language of the text"><span class="thumb" aria-hidden="true"></span>
+    <button type="button" data-mode="aro" aria-pressed="false">Aromână</button><button type="button" data-mode="rom" aria-pressed="false">Romani</button><button type="button" data-mode="auto" aria-pressed="true">Auto</button>
+   </div>
+  </div>
+  <div class="field">
+   <label for="text" class="sr" data-i18n="label">Text to explain</label>
+   <textarea id="text" spellcheck="false" rows="3"></textarea>
+   <span class="ghost" id="ghost" aria-hidden="true"></span>
+   <button type="button" class="clear" id="clear" aria-label="Clear the text" hidden>×</button>
+  </div>
+  <div class="chips" id="chips"><span class="try" data-i18n="try2">Try:</span></div>
+  <div class="row"><span id="status" aria-live="polite" data-i18n="loading">Loading the dictionaries…</span><a class="btn go" href="#cards-sec"><span data-i18n="explain">Explain the words</span> <span aria-hidden="true">→</span></a></div>
+  <a class="jump" id="jump" href="#cards-sec" hidden></a>
+ </div>
+</div>
+</section>
+
+<div class="wrap">
+<section class="features" aria-labelledby="h-feat">
+ <h2 id="h-feat" class="sr" data-i18n="ftitle">What Zbor · Lav does</h2>
+ <div class="feat"><span class="ficon"><svg aria-hidden="true"><use href="#s-bubbles"/></svg></span><h3 data-i18n="f1t">Finds the language</h3><p data-i18n="f1">Aromanian, Romani or plain Romanian? It tells them apart as you type.</p></div>
+ <div class="feat"><span class="ficon"><svg aria-hidden="true"><use href="#s-cards"/></svg></span><h3 data-i18n="f2t">Explains every word</h3><p data-i18n="f2">Each word gets a card with its likely Romanian meaning and how sure the model is.</p></div>
+ <div class="feat"><span class="ficon"><svg aria-hidden="true"><use href="#s-trap"/></svg></span><h3 data-i18n="f3t">Flags look-alike traps</h3><p data-i18n="f3">Words that look Romanian but mean something else get a red TRAP stamp.</p></div>
+ <div class="feat"><span class="ficon"><svg aria-hidden="true"><use href="#s-note"/></svg></span><h3 data-i18n="f4t">Knows words from songs</h3><p data-i18n-html="f4">Phrases like <i>Tu san shukar</i> get their meaning checked against public sources.</p></div>
+</section>
+<section class="block" id="cards-sec" aria-labelledby="h-cards">
+ <div class="results">
+  <div>
+   <span class="eyebrow" data-i18n="e1">01 · Your text</span>
+   <h2 id="h-cards" data-i18n-html="h2cards">Here is what it <i>says</i></h2>
+   <ul class="legend" aria-label="What the labels mean">
+    <li><span class="tag lg">✓ <span data-i18n="lg1t">Sure</span></span><span data-i18n="lg1">right at least 4 times in 5</span></li>
+    <li><span class="tag q lg">~ <span data-i18n="lg2t">Check</span></span><span data-i18n="lg2">probably right, check it</span></li>
+    <li><span class="tag r lg">? <span data-i18n="lg3t">Guess</span></span><span data-i18n="lg3">a guess, often wrong</span></li>
+    <li><span class="stamp lgs" data-i18n="lg4s">TRAP</span><span data-i18n="lg4">looks Romanian, means something else</span></li>
+   </ul>
+   <div id="detect" class="detect" hidden></div>
+   <div id="known" class="known" hidden></div>
+   <div id="mt" class="mt none"></div>
+   <div class="cards" id="cards"></div>
+  </div>
+  <aside class="card" id="detail" aria-live="polite"><p class="empty" data-i18n="pick">Click a word card to read all its meanings.</p></aside>
+ </div>
+</section>
+
+<section class="block aboutband why2" aria-labelledby="h-about">
+ <svg class="bstar" aria-hidden="true" style="top:22px;right:28px;width:14px;height:14px"><use href="#s-star"/></svg>
+ <svg class="bstar" aria-hidden="true" style="top:58px;right:74px;width:9px;height:9px"><use href="#s-star"/></svg>
+ <svg class="bstar" aria-hidden="true" style="bottom:26px;left:30px;width:11px;height:11px"><use href="#s-star"/></svg>
+ <div class="why2grid">
+  <div class="why2text">
+   <span class="eyebrow" data-i18n="e3">02 · Why it matters</span>
+   <h2 id="h-about" class="statement" data-i18n-html="stmt">Aromanian is a <i>sister</i> of Romanian. Romani came from <i>India</i>. Both look easy to read. <i>Neither</i> means what you think.</h2>
+  </div>
+  <div class="specimens">
+   <article class="spec">
+    <b class="sw">zbor</b>
+    <p><span class="tag lg">ARO</span><span data-i18n="sp1a">word</span></p>
+    <p><span class="tag r lg">RO</span><span data-i18n="sp1b">flight</span></p>
+   </article>
+   <article class="spec">
+    <b class="sw">mișto</b>
+    <p><span class="tag q lg">ROM</span><span data-i18n="sp2a">good, fine (mišto)</span></p>
+    <p><span class="tag r lg">RO</span><span data-i18n="sp2b">slang borrowed from Romani</span></p>
+   </article>
+   <article class="spec">
+    <b class="sw">haristo</b>
+    <p><span class="tag lg">ARO</span><span data-i18n="sp3a">thank you</span></p>
+    <p><span class="tag r lg">RO</span><span data-i18n="sp3b">no such word, from Greek</span></p>
+   </article>
+  </div>
+ </div>
+ <dl class="factline">
+  <div><dt><span class="tag lg">ARO</span></dt><dd data-i18n="fl1">Romance family · Dobrogea and the Balkans · endangered · not in Google Translate</dd></div>
+  <div><dt><span class="tag q lg">ROM</span></dt><dd data-i18n="fl2">Indo-Aryan family · Roma across Europe · many dialects · Google Translate since 2024, sentences only</dd></div>
+ </dl>
+</section>
+
+<section class="block" id="facts-sec" aria-labelledby="h-facts">
+ <div class="orn" aria-hidden="true" style="margin-top:0"><svg viewBox="0 0 240 20"><use href="#s-orn"/></svg></div>
+ <span class="eyebrow" data-i18n="e2">03 · Fun facts</span>
+ <h2 id="h-facts" data-i18n-html="factsh">Did you <i>know?</i></h2>
+ <p class="lede" data-i18n="factsp">Small things that give each language away.</p>
+ <div class="facts2">
+  <div class="fact wide same" id="same" hidden>
+   <h3 data-i18n="sameh">Same spelling, different meaning</h3>
+   <p data-i18n="samep">Found automatically: short words both dictionaries know well but translate differently. Guess the language wrong and you get the wrong meaning.</p>
+   <div class="tablewrap"><table id="same-t"></table></div>
+  </div>
+  <div class="factcol">
+   <div class="fact"><svg class="mixi" aria-hidden="true"><use href="#s-bubbles"/></svg><h3>so keres? · tsi fats?</h3><p data-i18n="mix3">“What are you doing?” in Romani and in Aromanian. Not the same language.</p></div>
+   <div class="fact tell">
+    <h3 data-i18n="tellh">How to tell them apart</h3>
+    <div class="cue"><span class="tag lg">ARO</span><p data-i18n-html="tell1">Aromanian spelling: <b>ã</b>, <b>sh</b>, <b>ts</b>, <b>dz</b>, <b>lj</b>, <b>nj</b>, as in <i>shi</i>, <i>tsi</i>, <i>dzua</i>, <i>muljari</i>.</p></div>
+    <div class="cue"><span class="tag q lg">ROM</span><p data-i18n-html="tell2">Romani sounds: <b>kh</b>, <b>ph</b>, <b>th</b> and endings like <b>-esko</b> or <b>-imos</b>, as in <i>khere</i>, <i>phral</i>, <i>mishtimos</i>.</p></div>
+   </div>
+  </div>
+ </div>
+ <div id="songs-sec" hidden>
+  <h3 class="subh"><svg aria-hidden="true"><use href="#s-note"/></svg><span data-i18n-html="songsh">Romani you <i>already know</i> from songs</span></h3>
+  <p class="lede" data-i18n="songsp">Manele and Roma songs carry Romani words into every Romanian playlist. Tap one to see what Lav makes of it.</p>
+  <div class="songs" id="songs"></div>
+ </div>
+</section>
+
+<section class="block" id="results-sec" aria-labelledby="h-res">
+ <div class="orn" aria-hidden="true" style="margin-top:0"><svg viewBox="0 0 240 20"><use href="#s-orn"/></svg></div>
+ <span class="eyebrow" data-i18n="e4">04 · Results</span>
+ <h2 id="h-res" data-i18n-html="resh2">How well it <i>works</i></h2>
+ <p class="lede" data-i18n="resp">Tested on sentences and words the models never saw while learning, against guessing a word by its spelling, the way a Romanian reader does.</p>
+ <div class="stats" id="stats"></div>
+ <div class="charts" id="charts"></div>
+ <p class="more"><a href="#method" data-i18n="resmore">All tables and how we tested →</a></p>
+</section>
+
+
+</div>
+</div>
+
+<!-- ============ TEAM ============ -->
+<div class="page" id="p-team">
+<section class="phero" aria-labelledby="h-team">
+ <svg class="band" aria-hidden="true" viewBox="0 0 1312 300" preserveAspectRatio="xMidYMax slice"><use href="#s-band"/></svg>
+ <div class="ptab">
+  <span class="mark" data-i18n="e_team">Zbor · Lav · the people</span>
+  <h1 id="h-team" tabindex="-1" data-i18n-html="teamh">Meet the <i>team</i></h1>
+  <p data-i18n="teamp">We built Zbor · Lav for the Veritas AI International High School Hackathon 2026, in the AI + Languages track.</p>
+ </div>
+</section>
+<div class="wrap">
+ <div class="teamtop">
+  <figure class="photo"><img src="team.jpg" width="1600" height="901" alt="The Zbor · Lav team, from left to right: Lavinia Ichim, Alexandru-Eduard Bejenaru and Bianca-Mihaela Cajvan" loading="lazy" decoding="async"></figure>
+  <div class="motto">
+   <h3 data-i18n-html="mottoh">Three students. Two regions. <i>One shared idea.</i></h3>
+   <p data-i18n="mottop">Although we all come from Romania, our accents, regional expressions and everyday experiences differ. We bring those different perspectives together in a project that explores the linguistic diversity within our own country.</p>
+   <div class="places"><span>Suceava</span><span>Constanța</span></div>
+  </div>
+ </div>
+ <div class="team">
+  <article class="person">
+   <span class="num">01</span><b>Lavinia Ichim</b>
+   <span class="role" data-i18n="r1">Research &amp; project strategy</span>
+   <p data-i18n="d1">Problem identification, linguistic research, regional language differences, project planning and defining the platform’s direction.</p>
+   <span class="place">Suceava</span>
+  </article>
+  <article class="person">
+   <span class="num">02</span><b>Alexandru-Eduard Bejenaru</b>
+   <span class="role" data-i18n="r3">AI &amp; technical development</span>
+   <p data-i18n="d3">AI integration, translation logic, Python development, website architecture and technical implementation.</p>
+   <span class="place">Constanța</span>
+  </article>
+  <article class="person">
+   <span class="num">03</span><b>Bianca-Mihaela Cajvan</b>
+   <span class="role" data-i18n="r2">Linguistic data &amp; content development</span>
+   <p data-i18n="d2">Vocabulary collection, translation research, language data organisation, linguistic examples and content structuring.</p>
+   <span class="place">Suceava</span>
+  </article>
+ </div>
+</div>
+</div>
+
+<!-- ============ METHOD ============ -->
+<div class="page" id="p-method">
+<section class="phero" aria-labelledby="h-meth">
+ <svg class="band" aria-hidden="true" viewBox="0 0 1312 300" preserveAspectRatio="xMidYMax slice"><use href="#s-band"/></svg>
+ <div class="ptab">
+  <span class="mark" data-i18n="e_meth">Data · model · tests</span>
+  <h1 id="h-meth" tabindex="-1" data-i18n-html="meth">How it <i>works</i></h1>
+  <p data-i18n="methp">Five steps, every number tested against a simple baseline on data the model never saw.</p>
+ </div>
+</section>
+<div class="wrap" id="method-doc">
+ <ol class="steps">
+  <li><span class="num">01</span><b data-i18n="m_1t">Data</b><p data-i18n="m_1">65,708 Romanian–Aromanian sentence pairs (University of Bucharest corpus) and 1,474 folk-tale pairs. For Romani: 7,900 Kalderash Bible verses (OPUS) plus 7,157 Chergash verses paired with a modern Romanian Bible, for training only. Each set is split into training, tuning and test parts; the tests were used once.</p></li>
+  <li><span class="num">02</span><b data-i18n="m_2t">Learning meanings</b><p data-i18n="m_2">IBM Model 1, a classic word-alignment method: if a word keeps appearing in sentences whose Romanian translation contains a certain word, they probably mean the same thing.</p></li>
+  <li><span class="num">03</span><b data-i18n="m_3t">Unknown words</b><p data-i18n="m_3">Zbor converts between the two Aromanian spelling systems and borrows the meaning of the most similar known word. Romani has no single spelling (so keres, socares), so Lav compares a simplified “skeleton” of the spelling.</p></li>
+  <li><span class="num">04</span><b data-i18n="m_4t">Which language?</b><p data-i18n="m_4">A small character n-gram classifier (naive Bayes) trained on Aromanian, Romani and Romanian text.</p></li>
+  <li><span class="num">05</span><b data-i18n="m_5t">Fair scoring</b><p data-i18n="m_5">A guess counts if the Romanian word appears in the correct translation, each word matched only once. The baseline, “looks like Romanian”, picks the Romanian word spelled most alike, as a reader does in their head.</p></li>
+ </ol>
+ <div class="orn" aria-hidden="true"><svg viewBox="0 0 240 20"><use href="#s-orn"/></svg></div>
+ <h2 class="sech" data-i18n-html="resh">The <i>results</i></h2>
+ <div class="tgrid">
+  <div class="tcard wide"><h3 data-i18n="r_aro">Aromanian (Zbor), test sets, % of words right</h3><div class="tablewrap"><table id="t-aro"></table></div></div>
+  <div class="tcard"><h3 data-i18n="r_pb">Everyday Aromanian: 55 phrases and words from public phrasebooks (lenient)</h3><div class="tablewrap"><table id="t-pb"></table></div></div>
+  <div class="tcard"><h3 data-i18n="r_ctx">Aromanian with sentence context (AroTranslate)</h3><div class="tablewrap"><table id="t-ctx"></table></div><p class="note" data-i18n="ctxnote">AroTranslate was trained on a larger version of the same corpus, so these numbers are too optimistic.</p></div>
+  <div class="tcard wide"><h3 data-i18n="r_rom">Romani (Lav), % of words right (lenient)</h3><div class="tablewrap"><table id="t-rom"></table></div></div>
+  <div class="tcard wide"><h3 data-i18n="r_lid">Language detection, % detected correctly</h3><div class="tablewrap"><table id="t-lid"></table></div><p class="note" id="lid-everyday"></p></div>
+ </div>
+ <div class="limits">
+  <h3 data-i18n="limh">Limits</h3>
+  <ul>
+   <li data-i18n="l1">No native speaker has checked our trap list or meanings yet. Treat the traps as possible traps.</li>
+   <li data-i18n="l2">The training text is old and mostly religious, so modern words are often unknown. The Romani model learned from two Bibles only, 4 times less text than Zbor.</li>
+   <li data-i18n="l3">Each word gets its most common meaning; only the whole-sentence translation (Aromanian examples) can use context.</li>
+   <li data-i18n="l4">Lav is rarely “sure”: only about 1 Romani word in 10 reaches the level that is right 80% of the time, so most of its words show “check” or “guess”.</li>
+   <li data-i18n="l5">Our data checker flagged 579 suspicious training pairs (scan errors, number mismatches, copies), but removing them did not improve the results, so we kept them.</li>
+  </ul>
+ </div>
+</div>
+</div>
+
+<!-- ============ CREDITS ============ -->
+<div class="page" id="p-credits">
+<section class="phero" aria-labelledby="h-cred">
+ <svg class="band" aria-hidden="true" viewBox="0 0 1312 300" preserveAspectRatio="xMidYMax slice"><use href="#s-band"/></svg>
+ <div class="ptab">
+  <span class="mark" data-i18n="e_cred">With thanks</span>
+  <h1 id="h-cred" tabindex="-1" data-i18n-html="credh">Credits and <i>sources</i></h1>
+  <p data-i18n="credp">Everything we built on, with its licence. We did not change any of the texts we used.</p>
+ </div>
+</section>
+<div class="wrap">
+ <div class="cgrid">
+  <section class="ccard wide">
+   <h3 data-i18n="c_data">Data</h3>
+   <ul>
+    <li>Aromanian–Romanian corpus: <a href="https://huggingface.co/datasets/aronlp/aromanian-romanian-MT-corpus-limited">aronlp/aromanian-romanian-MT-corpus-limited</a> (CC BY-NC 4.0). Petrariu &amp; Nisioi, LREC-COLING 2024; Jerpelea, Rădoi &amp; Nisioi, COLING 2025.</li>
+    <li>Aromanian folk tales: <a href="https://github.com/senisioi/aromanian">github.com/senisioi/aromanian</a> (GPL-3.0), same authors.</li>
+    <li>Romanian–Romani Bible: OPUS <a href="https://opus.nlpl.eu/bible-uedin/corpus/version/bible-uedin">bible-uedin</a> (CC0). Christodoulopoulos &amp; Steedman, <i>A massively parallel corpus: the Bible in 100 languages</i>, 2015.</li>
+    <li>Chergash Romani New Testament (<i>Biblija pe romani Čergarsko čhib</i>), © 2018 Pioneers, <a href="https://ebible.org/details.php?id=rmyChergash">ebible.org</a>, CC BY-SA 4.0, and the Romanian <i>Biblia Liberă</i>, <a href="https://ebible.org/details.php?id=ronbl">ebible.org</a>, public domain. Paired verse by verse as extra training data for Lav.</li>
+    <li>Aromanian Wikipedia (<a href="https://roa-rup.wikipedia.org">roa-rup.wikipedia.org</a>, CC BY-SA 4.0), used for a real-text test.</li>
+    <li data-i18n-html="c_pb">Everyday test phrases: Wikipedia, Wiktionary, Omniglot, g4media, dexonline, Dilema Veche, a Stockholm University Romani worksheet and an online Romani phrase list. One source per line in our CSV files.</li>
+   </ul>
+  </section>
+  <section class="ccard">
+   <h3 data-i18n="c_models">Models and methods</h3>
+   <ul>
+    <li>IBM Model 1: Brown et al., <i>The Mathematics of Statistical Machine Translation</i>, 1993.</li>
+    <li>AroTranslate (<a href="https://huggingface.co/aronlp/NLLB-rup-ron-eng-ct2">aronlp/NLLB-rup-ron-eng-ct2</a>, CC BY-NC 4.0), used in our notebook for the whole-sentence translations of the examples.</li>
+   </ul>
+  </section>
+  <section class="ccard">
+   <h3 data-i18n="c_tools">Tools</h3>
+   <ul>
+    <li>Python, pandas, NumPy, rapidfuzz, sacrebleu, CTranslate2, Hugging Face datasets, Gradio, Jupyter / Google Colab.</li>
+    <li data-i18n="c_fonts">Fonts: Source Serif 4, Source Sans 3 and Courier Prime (SIL Open Font License), via Google Fonts. Illustrations drawn for this project.</li>
+    <li data-i18n="c_ai">AI assistants: Claude (Anthropic) and ChatGPT (OpenAI) helped us research, write and debug code, and draft text. We ran every step ourselves, checked the results and can explain each part.</li>
+   </ul>
+  </section>
+ </div>
+</div>
+</div>
+</main>
+
+<div class="wrap"><footer data-i18n-html="foot">Zbor · Lav by Lavinia Ichim, Bianca-Mihaela Cajvan and Alexandru-Eduard Bejenaru · Veritas AI Hackathon 2026 · Data: University of Bucharest Aromanian corpus, Romani Bibles (OPUS, ebible.org) · <a href="#method">Method</a> · <a href="#credits">Credits</a></footer></div>
+
+<script>
+document.documentElement.lang = 'en';
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => document.querySelectorAll(s);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+
+  /* ---------- hero ornaments ---------- */
+  const NS = 'http://www.w3.org/2000/svg', vines = $('#vines'), stars = $('#stars');
+  const use = (id, x, y, rot, s) => { const u = document.createElementNS(NS, 'use'); u.setAttribute('href', '#' + id); u.setAttribute('transform', `translate(${x} ${y}) rotate(${rot || 0}) scale(${s || 1})`); return u; };
+  [[90,60],[260,120],[330,50],[980,60],[1060,130],[1240,70],[420,170],[900,175],[40,200],[1290,210],[560,40],[760,36]].forEach(([x, y]) => stars.append(use('star', x, y, 0, .9)));
+  const cx = 656, cy = 384, AR = 342;
+  for (const side of [-1, 1]) {
+    let d = `M${cx + side * AR} 740`;
+    for (let a = 0; a <= 90; a += 3) { const t = a * Math.PI / 180, r = AR + 6 * Math.sin(a / 7); d += ` L${cx + side * r * Math.cos(t)} ${cy - r * Math.sin(t)}`; }
+    const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); vines.append(p);
+    for (let a = 0; a <= 88; a += 8) { const t = a * Math.PI / 180, x = cx + side * AR * Math.cos(t), y = cy - AR * Math.sin(t); vines.append(use('leaf', x, y, side < 0 ? (-a - 60) : (a + 240), .8)); if (a % 16 === 0) vines.append(use('flower', x + side * 10 * Math.cos(t), y - 10 * Math.sin(t), 0, .9)); }
+    for (let y = 420; y <= 730; y += 34) { vines.append(use('leaf', cx + side * AR, y, side < 0 ? 200 : -20, .8)); if (y % 68 < 34) vines.append(use('flower', cx + side * (AR + 12), y + 14, 0, .9)); }
+  }
+  for (let x = 8; x < 1312; x += 22) { if (x > 330 && x < 982) continue; const p = document.createElementNS(NS, 'path'); p.setAttribute('d', `M${x} 740c2-12 0-20 -4-28M${x + 6} 740c0-10 4-16 8-20`); p.setAttribute('stroke-width', '1'); vines.append(p); if (x % 44 < 22) vines.append(use('flower', x + 2, 712 - (x % 3) * 6, 0, .8)); }
+
+  /* ---------- language of the site ---------- */
+  const RO = {
+    skip: 'Sari la traducător', m1: 'Traducător', m2: 'Echipa', m3: 'Metoda', m4: 'Surse', try: 'Încearcă',
+    mark: 'Zbor · Lav · două cuvinte pentru „cuvânt”',
+    h1: 'Două limbi care <i>par</i> românește. <i>Niciuna</i> nu este.',
+    sub: 'Lipește un text în aromână sau romani. Zbor · Lav îl explică cuvânt cu cuvânt și marchează cuvintele pe care românii le înțeleg greșit.',
+    boxtitle: 'Lipește sau scrie o propoziție', try2: 'Încearcă:',
+    tagline: 'Aromână și romani, cuvânt cu cuvânt', ftitle: 'Ce face Zbor · Lav',
+    f1t: 'Găsește limba', f1: 'Aromână, romani sau română? Le deosebește pe măsură ce scrii.',
+    f2t: 'Explică fiecare cuvânt', f2: 'Fiecare cuvânt primește o fișă cu sensul probabil în română și cât de sigur e modelul.',
+    f3t: 'Semnalează capcanele', f3: 'Cuvintele care par românești, dar înseamnă altceva, primesc ștampila roșie CAPCANĂ.',
+    f4t: 'Știe cuvinte din melodii', f4: 'Expresii ca <i>Tu san shukar</i> primesc sensul verificat în surse publice.',
+    lg4s: 'CAPCANĂ', lg1t: 'Sigur', lg1: 'corect cel puțin 4 din 5 ori', lg2t: 'Verifică', lg2: 'probabil corect, verifică', lg3t: 'Ghicit', lg3: 'o încercare, des greșită', lg4: 'pare românesc, înseamnă altceva',
+    songsh: 'Romani pe care <i>o știi deja</i> din melodii', songsp: 'Manelele și cântecele romilor aduc cuvinte din romani în fiecare playlist românesc. Apasă pe unul ca să vezi ce înțelege Lav.',
+    label: 'Textul de explicat', loading: 'Se încarcă dicționarele…', explain: 'Explică cuvintele',
+    h2cards: 'Iată ce <i>spune</i>', pick: 'Apasă pe o fișă ca să vezi toate sensurile cuvântului.',
+    mix1: 'Cuvinte din romani pe care românii le folosesc deja ca argou. Nu sunt aromâne.',
+    mix2: 'Cuvinte aromâne care îi păcălesc pe români: „cuvânt”, „mulțumesc”, „departe”.',
+    mix3: '„Ce faci?” în romani și în aromână. Nu e aceeași limbă.', sameh: 'Aceeași scriere, alt sens',
+    e2: '03 · Știai că?', factsh: '<i>Știai</i> că?', factsp: 'Mici detalii care trădează fiecare limbă.',
+    tellh: 'Cum le deosebești', tell1: 'Scrierea aromână: <b>ã</b>, <b>sh</b>, <b>ts</b>, <b>dz</b>, <b>lj</b>, <b>nj</b>, ca în <i>shi</i>, <i>tsi</i>, <i>dzua</i>, <i>muljari</i>.',
+    tell2: 'Sunete din romani: <b>kh</b>, <b>ph</b>, <b>th</b> și terminații ca <b>-esko</b> sau <b>-imos</b>, ca în <i>khere</i>, <i>phral</i>, <i>mishtimos</i>.',
+    tell3: 'Nu ești sigur? Lasă comutatorul pe Auto: verificarea limbii face asta pentru tine.',
+    stmt: 'Aromâna e o <i>soră</i> a limbii române. Romani a venit din <i>India</i>. Amândouă par ușor de citit. <i>Niciuna</i> nu înseamnă ce crezi.',
+    sp1a: 'cuvânt', sp1b: 'zbor (al păsărilor)', sp2a: 'bun, bine (mišto)', sp2b: 'argou împrumutat din romani', sp3a: 'mulțumesc', sp3b: 'nu există, vine din greacă',
+    fl1: 'familia romanică · Dobrogea și Balcanii · pe cale de dispariție · nu e în Google Translate',
+    fl2: 'familia indo-ariană · romii din toată Europa · multe dialecte · în Google Translate din 2024, doar propoziții',
+    whylede: 'Amândouă par ușor de citit pentru un român. Doar una dintre ele e înrudită cu româna.',
+    w_aro: 'Aromâna', w_rom: 'Romani', w_fam: 'Familie', w_where: 'Vorbită', w_fool: 'Capcana', w_spell: 'Scriere',
+    w_aro1: 'Romanică, o soră a limbii române', w_aro2: 'În Dobrogea și în Balcani: Grecia, Albania, Macedonia de Nord',
+    w_aro3: '<i>zbor</i> înseamnă „cuvânt”, nu „zbor”', w_aro4: '<b>ã</b>, <b>sh</b>, <b>ts</b>, <b>dz</b>: <i>shi</i>, <i>tsi</i>, <i>dzua</i>', w_aro5: 'Nu există',
+    w_rom1: 'Indo-ariană, a venit din India', w_rom2: 'De romii din toată Europa, inclusiv din România, în multe dialecte',
+    w_rom3: 'argoul, ca <i>mișto</i>, <i>șucar</i>, o face să pară cunoscută', w_rom4: 'nu are una singură: <i>so keres</i> = <i>socares</i>', w_rom5: 'Din 2024, doar propoziții întregi',
+    wf1: 'Le deosebește pe măsură ce scrii', wf2: 'Explică fiecare cuvânt, învățat din 80.000 de perechi de propoziții traduse', wf3: 'Rulează în browser: nimic din ce scrii nu e trimis nicăieri',
+    e4: '04 · Rezultate', resh2: 'Cât de bine <i>funcționează</i>', resp: 'Testat pe propoziții și cuvinte pe care modelele nu le-au văzut la învățare, comparat cu ghicitul unui cuvânt după scriere, cum face un cititor român.',
+    resmore: 'Toate tabelele și cum am testat →',
+    samep: 'Găsite automat: cuvinte scurte pe care ambele dicționare le știu bine, dar le traduc diferit. Dacă ghicești greșit limba, primești sensul greșit.',
+    h2about: 'Două limbi „Rom-”, <i>două</i> familii diferite',
+    a1: 'Aromâna este o limbă romanică pe cale de dispariție, o rudă apropiată a românei, vorbită în Dobrogea și în Balcani. Pentru că pare cunoscută, românii cred că o pot citi, dar multe cuvinte înseamnă altceva. Chiar și <i>zbor</i> înseamnă „cuvânt” în aromână.',
+    a2: 'Romani, limba romilor, vine din India și nu este înrudită cu româna. Argoul românesc a împrumutat câteva cuvinte din ea, așa că cele două limbi sunt des confundate.',
+    a3: 'Google Translate nu are aromână, iar romani (adăugată în 2024) traduce propoziții întregi, fără să explice cuvintele. Zbor · Lav a învățat sensul fiecărui cuvânt din mii de perechi de propoziții traduse, ghicește în ce limbă e textul și arată, fișă cu fișă, ce înseamnă probabil fiecare cuvânt și cât de sigur este.',
+    a4: 'Totul rulează în browserul tău. Nimic din ce scrii nu este trimis nicăieri.',
+    teamh: 'Cunoaște <i>echipa</i>', teamp: 'Am construit Zbor · Lav pentru Veritas AI International High School Hackathon 2026, secțiunea AI + Limbi.',
+    r1: 'Cercetare și strategia proiectului', d1: 'Identificarea problemei, cercetare lingvistică, diferențele regionale de limbă, planificarea proiectului și stabilirea direcției platformei.',
+    r2: 'Date lingvistice și dezvoltarea conținutului', d2: 'Colectarea vocabularului, cercetare pentru traduceri, organizarea datelor lingvistice, exemple lingvistice și structurarea conținutului.',
+    r3: 'AI și dezvoltare tehnică', d3: 'Integrarea AI, logica de traducere, programare în Python, arhitectura site-ului și implementarea tehnică.',
+    mottoh: 'Trei elevi. Două regiuni. <i>O singură idee.</i>',
+    mottop: 'Deși venim cu toții din România, accentele, expresiile regionale și experiențele noastre de zi cu zi diferă. Aducem aceste perspective împreună într-un proiect care explorează diversitatea lingvistică din propria noastră țară.',
+    meth: 'Cum <i>funcționează</i>', credh: 'Surse și <i>mulțumiri</i>',
+    r_aro: 'Aromână (Zbor), seturi de test, % cuvinte corecte', r_pb: 'Aromâna de zi cu zi: 55 de expresii și cuvinte din ghiduri publice', r_ctx: 'Aromână cu context (AroTranslate)',
+    r_rom: 'Romani (Lav), % cuvinte corecte', r_lid: 'Recunoașterea limbii, % corect', limh: 'Limite',
+    m_1t: 'Date', m_2t: 'Învățarea sensurilor', m_3t: 'Cuvinte necunoscute', m_4t: 'Ce limbă e?', m_5t: 'Punctaj corect',
+    m_1: '65.708 perechi de propoziții română–aromână (corpusul Universității din București) și 1.474 de perechi din basme. Pentru romani: 7.900 de versete în romani căldărărească (OPUS) plus 7.157 de versete chergash puse alături de o Biblie în română modernă, doar pentru antrenare. Fiecare set e împărțit în antrenare, reglare și test; testele au fost folosite o singură dată.',
+    m_2: 'IBM Model 1, o metodă clasică de aliniere a cuvintelor: dacă un cuvânt apare mereu în propoziții a căror traducere conține un anumit cuvânt românesc, probabil înseamnă același lucru.',
+    m_3: 'Zbor convertește între cele două sisteme de scriere ale aromânei și împrumută sensul celui mai asemănător cuvânt cunoscut. Romani nu are o scriere unică (so keres, socares), așa că Lav compară un „schelet” simplificat al scrierii.',
+    m_4: 'Un mic clasificator pe bucăți de litere (naive Bayes), antrenat pe texte în aromână, romani și română.',
+    m_5: 'Un cuvânt ghicit contează dacă apare în traducerea corectă, fiecare cuvânt potrivit o singură dată. Comparăm cu regula „seamănă cu româna”: cuvântul românesc scris cel mai asemănător, cum face un cititor în minte.',
+    e1: '01 · Textul tău', e3: '02 · De ce contează', e_team: 'Zbor · Lav · oamenii', e_meth: 'Date · model · teste', e_cred: 'Cu mulțumiri',
+    methp: 'Cinci pași, fiecare cifră testată față de o regulă simplă, pe date pe care modelul nu le-a văzut.', resh: '<i>Rezultatele</i>',
+    credp: 'Tot ce am folosit, cu licența fiecărui lucru. Nu am modificat niciun text folosit.',
+    l1: 'Niciun vorbitor nativ nu a verificat încă lista de capcane sau sensurile. Tratează capcanele ca posibile capcane.',
+    l2: 'Textele de antrenare sunt vechi și mai ales religioase, așa că multe cuvinte moderne lipsesc. Modelul pentru romani a învățat doar din două Biblii, de 4 ori mai puțin text decât Zbor.',
+    l3: 'Fiecare cuvânt primește sensul cel mai des întâlnit; doar traducerea propoziției întregi (exemplele în aromână) poate folosi contextul.',
+    l4: 'Lav e rar „sigur”: doar cam 1 cuvânt romani din 10 ajunge la nivelul corect în 80% din cazuri, așa că majoritatea cuvintelor arată „verifică” sau „ghicit”.',
+    l5: 'Verificatorul nostru de date a semnalat 579 de perechi suspecte la antrenare (erori de scanare, numere diferite, copii), dar eliminarea lor nu a îmbunătățit rezultatele, așa că le-am păstrat.',
+    c_data: 'Date', c_models: 'Modele și metode', c_tools: 'Unelte',
+    c_pb: 'Expresii de zi cu zi pentru test: Wikipedia, Wiktionary, Omniglot, g4media, dexonline, Dilema Veche, o fișă de romani a Universității din Stockholm și o listă online de expresii în romani. O sursă pe fiecare rând în fișierele noastre CSV.',
+    c_fonts: 'Fonturi: Source Serif 4, Source Sans 3 și Courier Prime (SIL Open Font License), prin Google Fonts. Ilustrațiile au fost desenate pentru acest proiect.',
+    c_ai: 'Asistenți AI: Claude (Anthropic) și ChatGPT (OpenAI) ne-au ajutat la documentare, la scrierea și depanarea codului și la redactarea textelor. Am rulat fiecare pas noi înșine, am verificat rezultatele și putem explica fiecare parte.',
+    ctxnote: 'AroTranslate a fost antrenat pe o versiune mai mare a aceluiași corpus, deci aceste cifre sunt prea optimiste.',
+    foot: 'Zbor · Lav de Lavinia Ichim, Bianca-Mihaela Cajvan și Alexandru-Eduard Bejenaru · Veritas AI Hackathon 2026 · Date: corpusul aromân al Universității din București, Biblii în romani (OPUS, ebible.org) · <a href="#method">Metoda</a> · <a href="#credits">Surse</a>',
+  };
+  const EN = {};
+  $$('[data-i18n]').forEach((el) => { EN[el.dataset.i18n] = el.textContent; });
+  $$('[data-i18n-html]').forEach((el) => { EN[el.dataset.i18nHtml] = el.innerHTML; });
+  let LANG = store.get('zl-lang') === 'ro' ? 'ro' : 'en';
+  const T = {
+    en: { sure: 'sure', check: 'check', guess: 'guess', name: 'probably a name', words: (n) => `${n} word${n === 1 ? '' : 's'}`,
+      det: { aro: 'Aromanian', rom: 'Romani', ro: 'Romanian' }, detected: 'Detected', using: 'explained as',
+      isLang: (l) => `✓ Language check: this looks like ${l}`, mismatch: (l) => `This looks more like ${l}.`, sw: 'Switch',
+      plain: 'This looks like Romanian, so there is nothing to translate. Pick Aromână or Romani to explain it anyway.',
+      mtsrc: 'Whole sentence · AroTranslate', nomt: 'Word-by-word cards only. Whole-sentence translations come from our notebook; pick an Aromanian example to see one.',
+      seen: (n) => `seen ${n} ${n === 1 ? 'time' : 'times'} in training`, notseen: 'not in the dictionary',
+      known: 'Found in the learned dictionary.', spelling: (k) => `Found after converting the spelling to “${k}”.`, similar: (k) => `Unknown; borrowed from the similar word “${k}”. Often wrong.`,
+      none: 'Not in the dictionary. The guess is only the Romanian word it is spelled most like.', conf: (g) => `“${g}” also appears in the whole-sentence translation.`,
+      trap: (a, b) => `Trap: looks like Romanian “${a}”, but probably means “${b}”.`, like: (w) => `Guessing by spelling would give “${w}”.`,
+      slang: 'Romanian slang borrowed this word from Romani.', type: 'Type or paste some text above.',
+      st1: 'of everyday Aromanian words explained right by Zbor', st2: 'of everyday Romani words, typed the way people write online, explained right by Lav', st3: 'of everyday phrases put in the right language',
+      waitRom: 'Loading the Romani dictionary and the language check…', romFail: 'The Romani dictionary did not load. Aromanian still works; reload to try again.',
+      knownT: 'From our phrase list', src: 'source',
+      ch: { base: 'Guessing by spelling', t1: 'Zbor · Aromanian', s1: '% of words given the right Romanian meaning (test sets)', a1: 'Corpus sentences', a2: 'Dictionary words', a3: 'Folk tales', a4: 'Everyday phrases',
+        t2: 'Lav · Romani', s2: '% of words given the right Romanian meaning (test sets)', r1: 'Bible verses', r2: 'Everyday, typed online', r3: 'Words from songs',
+        t3: 'Language check', s3: '% of texts put in the right language', lidT: 'Language check', l1: 'sentences', l2: 'Everyday Aromanian', l3: 'Romani typed online',
+        t4: 'How sure is “sure”?', s4: '% right on test, for each label the cards show' },
+      songWord: 'heard in songs', trapWord: 'look-alike trap', seeCards: (n) => `See the ${n} word ${n === 1 ? 'card' : 'cards'} ↓`,
+      pages: { translator: 'Zbor · Lav: Aromanian and Romani, word by word', team: 'Team · Zbor · Lav', method: 'Method · Zbor · Lav', credits: 'Credits · Zbor · Lav' },
+      knownP: 'These meanings come from public sources we checked, not from the model. The cards below show what the model learned on its own.',
+      th: ['Word', 'In Aromanian', 'In Romani'] },
+    ro: { sure: 'sigur', check: 'verifică', guess: 'ghicit', name: 'probabil un nume', words: (n) => `${n} ${n === 1 ? 'cuvânt' : 'cuvinte'}`,
+      det: { aro: 'aromână', rom: 'romani', ro: 'română' }, detected: 'Detectat', using: 'explicat ca',
+      isLang: (l) => `✓ Verificarea limbii: pare ${l}`, mismatch: (l) => `Pare mai degrabă ${l}.`, sw: 'Schimbă',
+      plain: 'Pare română, deci nu e nimic de tradus. Alege Aromână sau Romani ca să-l explici oricum.',
+      mtsrc: 'Propoziția întreagă · AroTranslate', nomt: 'Doar fișe cuvânt cu cuvânt. Traducerile propozițiilor vin din notebook-ul nostru; alege un exemplu în aromână ca să vezi una.',
+      seen: (n) => `văzut de ${n} ori la antrenare`, notseen: 'nu e în dicționar',
+      known: 'Găsit în dicționarul învățat.', spelling: (k) => `Găsit după ce am convertit scrierea în „${k}”.`, similar: (k) => `Necunoscut; sens împrumutat de la cuvântul asemănător „${k}”. Des greșit.`,
+      none: 'Nu e în dicționar. Ghicitul e doar cuvântul românesc cel mai asemănător ca scriere.', conf: (g) => `„${g}” apare și în traducerea propoziției.`,
+      trap: (a, b) => `Capcană: seamănă cu „${a}”, dar probabil înseamnă „${b}”.`, like: (w) => `După scriere ai ghici „${w}”.`,
+      slang: 'Argoul românesc a împrumutat acest cuvânt din romani.', type: 'Scrie sau lipește un text mai sus.',
+      st1: 'din cuvintele aromâne de zi cu zi explicate corect de Zbor', st2: 'din cuvintele romani de zi cu zi, scrise cum se scrie online, explicate corect de Lav', st3: 'din expresiile de zi cu zi puse în limba corectă',
+      waitRom: 'Se încarcă dicționarul romani și verificarea limbii…', romFail: 'Dicționarul romani nu s-a încărcat. Aromâna merge în continuare; reîncarcă pagina.',
+      knownT: 'Din lista noastră de expresii', src: 'sursa',
+      ch: { base: 'Ghicit după scriere', t1: 'Zbor · aromână', s1: '% din cuvinte cu sensul românesc corect (seturi de test)', a1: 'Propoziții din corpus', a2: 'Cuvinte din dicționar', a3: 'Basme', a4: 'Expresii de zi cu zi',
+        t2: 'Lav · romani', s2: '% din cuvinte cu sensul românesc corect (seturi de test)', r1: 'Versete din Biblie', r2: 'De zi cu zi, scrise online', r3: 'Cuvinte din melodii',
+        t3: 'Verificarea limbii', s3: '% din texte puse în limba corectă', lidT: 'Verificarea limbii', l1: 'propoziții', l2: 'Aromână de zi cu zi', l3: 'Romani scrisă online',
+        t4: 'Cât de sigur e „sigur”?', s4: '% corect la test, pentru fiecare etichetă de pe fișe' },
+      songWord: 'auzit în melodii', trapWord: 'capcană', seeCards: (n) => `Vezi ${n === 1 ? 'fișa' : `cele ${n} fișe`} ↓`,
+      pages: { translator: 'Zbor · Lav: aromână și romani, cuvânt cu cuvânt', team: 'Echipa · Zbor · Lav', method: 'Metoda · Zbor · Lav', credits: 'Surse · Zbor · Lav' },
+      knownP: 'Aceste sensuri vin din surse publice pe care le-am verificat, nu din model. Fișele de mai jos arată ce a învățat modelul singur.',
+      th: ['Cuvânt', 'În aromână', 'În romani'] },
+  };
+  const t = () => T[LANG];
+  function applyLang() {
+    document.documentElement.lang = LANG;
+    const dict = LANG === 'ro' ? RO : EN;
+    $$('[data-i18n]').forEach((el) => { const v = dict[el.dataset.i18n]; if (v != null) el.textContent = v; });
+    $$('[data-i18n-html]').forEach((el) => { const v = dict[el.dataset.i18nHtml]; if (v != null) el.innerHTML = v; });
+    $$('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === LANG)));
+    if (typeof PAGE !== 'undefined') document.title = t().pages[PAGE];
+    splitStatement();
+    if (D) { renderStats(); renderSame(); run(); }
+  }
+  $$('.lang button').forEach((b) => b.addEventListener('click', () => { LANG = b.dataset.lang; store.set('zl-lang', LANG); applyLang(); }));
+
+  /* ---------- "why it matters": the statement lights up word by word as it scrolls through the screen ---------- */
+  function splitStatement() {
+    const h = document.querySelector('.statement'); if (!h) return;
+    const walk = (node) => {
+      [...node.childNodes].forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) frag.append(part);
+            else { const s = document.createElement('span'); s.className = 'wd'; s.textContent = part; frag.append(s); }
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1 && !n.classList.contains('wd')) walk(n);
+      });
+    };
+    walk(h);
+    lightStatement();
+  }
+  function lightStatement() {
+    const h = document.querySelector('.statement'); if (!h) return;
+    const words = h.querySelectorAll('.wd');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { words.forEach((w) => w.classList.add('lit')); return; }
+    const r = h.getBoundingClientRect(), vh = innerHeight;
+    const p = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (vh * 0.6)));
+    const n = Math.round(p * words.length);
+    words.forEach((w, i) => w.classList.toggle('lit', i < n));
+  }
+  addEventListener('scroll', lightStatement, { passive: true });
+  addEventListener('resize', lightStatement);
+
+  /* ---------- pages ---------- */
+  let PAGE = 'translator';
+  function route(e) {
+    const id = (location.hash || '#translator').slice(1);
+    const page = ['team', 'method', 'credits'].includes(id) ? id : 'translator';
+    const changed = page !== PAGE;
+    PAGE = page;
+    $$('.page').forEach((p) => p.classList.toggle('on', p.id === 'p-' + page));
+    $$('.menu a, .menu-sm a').forEach((a) => { if (a.getAttribute('href') === '#' + page) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    document.title = t().pages[page];
+    if (page !== 'translator') {
+      window.scrollTo(0, 0);
+      // move keyboard and screen-reader focus to the new page's title
+      if (e && changed) { const h = $(`#p-${page} h1`); if (h) h.focus({ preventScroll: true }); }
+    } else if (e && changed && id === 'translator') { window.scrollTo(0, 0); $('#h1').setAttribute('tabindex', '-1'); $('#h1').focus({ preventScroll: true }); }
+  }
+  addEventListener('hashchange', route); route();
+
+  /* ---------- text helpers ---------- */
+  const CED = { 'ş': 'ș', 'Ş': 'Ș', 'ţ': 'ț', 'Ţ': 'Ț' };
+  const fixCed = (s) => s.replace(/[şŞţŢ]/g, (c) => CED[c]);
+  const strip = (s) => s.normalize('NFD').replace(/\p{M}/gu, '');
+  const stem = (w) => strip(w.toLowerCase()).slice(0, 5);
+  const rep = (w, pairs) => pairs.reduce((s, [a, b]) => s.split(a).join(b), w);
+  const ARO2RO = [['sh', 'ș'], ['ts', 'ț'], ['dz', 'z'], ['lj', 'li'], ['nj', 'ni'], ['ã', 'ă'], ['ľ', 'l'], ['ń', 'n'], ['ḑ', 'z']];
+  const DIARO2CUNIA = [['d̦', 'dz'], ['ḑ', 'dz'], ['ș', 'sh'], ['ț', 'ts'], ['ľ', 'lj'], ['ń', 'nj'], ['ă', 'ã'], ['â', 'ã']];
+  const SKEL = [['dzh', 'z'], ['dž', 'z'], ['dj', 'z'], ['zh', 'z'], ['ž', 'z'], ['j', 'z'], ['dz', 'z'], ['ch', 'k'], ['kh', 'k'], ['č', 'k'], ['ć', 'k'], ['c', 'k'], ['q', 'k'],
+    ['sh', 's'], ['š', 's'], ['ș', 's'], ['ś', 's'], ['ț', 'ts'], ['ph', 'p'], ['th', 't'], ['x', 'h'], ['y', 'i'], ['w', 'v'], ['ă', 'a'], ['â', 'i'], ['î', 'i']];
+  const skeleton = (w) => strip(rep(w.toLowerCase(), SKEL)).replace(/h/g, '').replace(/(.)\1+/g, '$1');
+  const WORDS = (s) => [...fixCed(s.normalize('NFC')).matchAll(/\p{L}[\p{L}\p{M}]*/gu)].map((m) => m[0]);
+  const SLANG = new Set(['mișto', 'misto', 'mishto', 'șucar', 'sucar', 'shukar', 'gagiu', 'gagică', 'lovele', 'nasol', 'nașpa', 'bengos', 'mandea', 'barosan', 'hali']);
+
+  function lev(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    let prev = Array.from({ length: b.length + 1 }, (_, i) => i), cur = new Array(b.length + 1);
+    for (let i = 1; i <= a.length; i++) {
+      cur[0] = i; let rowMin = i;
+      for (let j = 1; j <= b.length; j++) { cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); if (cur[j] < rowMin) rowMin = cur[j]; }
+      if (rowMin > max) return max + 1;
+      [prev, cur] = [cur, prev];
+    }
+    return prev[b.length];
+  }
+  function bestMatch(q, byLen, minSim, window) {
+    let best = null, bestSim = -1;
+    for (let d = 0; d <= window; d++) for (const len of d ? [q.length - d, q.length + d] : [q.length]) {
+      const arr = byLen.get(len); if (!arr) continue;
+      const m = Math.max(q.length, len);
+      for (const [key, val] of arr) {
+        const maxDist = Math.floor((1 - Math.max(minSim, bestSim)) * m + 1e-9);
+        const dist = lev(q, key, maxDist); if (dist > maxDist) continue;
+        const s = 1 - dist / m; if (s > bestSim) { bestSim = s; best = val; }
+      }
+    }
+    return best === null || bestSim < minSim ? null : { val: best, sim: bestSim };
+  }
+  const byLen = (pairs) => { const m = new Map(); for (const [k, v] of pairs) { if (!m.has(k.length)) m.set(k.length, []); m.get(k.length).push([k, v]); } return m; };
+
+  /* ---------- models ---------- */
+  let D, R = null, Z, L = null, GREEN, YELLOW, SIM, PHRASES = [];
+  /* each meaning is stored once: {word: [meaning id, score in thousandths, ...]} */
+  function unpack(p) {
+    const out = {};
+    for (const [w, flat] of Object.entries(p.gloss)) { const o = []; for (let i = 0; i < flat.length; i += 2) o.push([p.vocab[flat[i]], flat[i + 1] / 1000]); out[w] = o; }
+    return out;
+  }
+  const normWords = (s, lang) => WORDS(s).map((w) => (lang === 'rom' ? skeleton(w) : strip(w.toLowerCase())));
+  function setupZ() {
+    GREEN = D.thresholds.green; YELLOW = D.thresholds.yellow; SIM = D.thresholds.similar;
+    const G = unpack(D.packed);
+    Z = { G, counts: D.counts, traps: D.traps, RO: D.ro_vocab, known: byLen(Object.keys(G).map((w) => [w, w])), cache: new Map(), likeCache: new Map(), green: GREEN, yellow: YELLOW };
+    Z.roBy = byLen(Z.RO.map((w, i) => [strip(w), i]));
+    PHRASES = (D.phrases || []).map((p) => ({ ...p, toks: normWords(p.text, p.lang) })).filter((p) => p.toks.length);
+  }
+  function setupL() {
+    const r = R.rom;
+    L = { G: unpack(r.packed), counts: r.counts, RO: r.ro_vocab, bySkel: new Map(), cache: new Map(), likeCache: new Map(),
+      green: r.thresholds ? r.thresholds.green : GREEN, yellow: r.thresholds ? r.thresholds.yellow : YELLOW };
+    Object.entries(r.counts).sort((a, b) => b[1] - a[1]).forEach(([w]) => { const s = skeleton(w); if (!L.bySkel.has(s) && L.G[w]) L.bySkel.set(s, w); });
+    L.skelBy = byLen([...L.bySkel.keys()].map((s) => [s, s]));
+    L.roBy = byLen(L.RO.map((w, i) => [strip(w), i]));
+  }
+  /* sourced phrases that appear in the text (longest first; one-word entries only for very short texts) */
+  function knownPhrases(text, lang) {
+    const toks = normWords(text, lang), hits = [];
+    for (const p of PHRASES) {
+      if (p.lang !== lang || (p.toks.length === 1 && toks.length > 3)) continue;
+      for (let i = 0; i + p.toks.length <= toks.length; i++) {
+        if (p.toks.every((t, j) => toks[i + j] === t)) { hits.push({ ...p, at: i }); break; }
+      }
+    }
+    hits.sort((a, b) => b.toks.length - a.toks.length);
+    const used = new Set(), out = [];
+    for (const h of hits) {
+      const span = h.toks.map((_, j) => h.at + j);
+      if (span.some((k) => used.has(k))) continue;
+      span.forEach((k) => used.add(k)); out.push(h);
+    }
+    return out.sort((a, b) => a.at - b.at).slice(0, 4);
+  }
+  function zLookup(w) {
+    if (Z.cache.has(w)) return Z.cache.get(w);
+    let r = null;
+    if (Z.G[w]) r = { key: w, how: 'known' };
+    else { const c = rep(w, DIARO2CUNIA); if (Z.G[c]) r = { key: c, how: 'spelling' }; else { const m = bestMatch(w, Z.known, SIM, Math.ceil(w.length * .34)); if (m) r = { key: m.val, how: 'similar' }; } }
+    Z.cache.set(w, r); return r;
+  }
+  function lLookup(w) {
+    if (L.cache.has(w)) return L.cache.get(w);
+    let r = null;
+    if (L.G[w]) r = { key: w, how: 'known' };
+    else { const s = skeleton(w); if (L.bySkel.has(s)) r = { key: L.bySkel.get(s), how: 'spelling' }; else { const m = bestMatch(s, L.skelBy, .75, Math.ceil(s.length * .34)); if (m) r = { key: L.bySkel.get(m.val), how: 'similar' }; } }
+    L.cache.set(w, r); return r;
+  }
+  function looksLike(M, w, map) {
+    if (M.likeCache.has(w)) return M.likeCache.get(w);
+    const q = strip(map ? rep(w, map) : w);
+    const m = bestMatch(q, M.roBy, 0, 4) || bestMatch(q, M.roBy, 0, 40);
+    const r = m ? M.RO[m.val] : '?'; M.likeCache.set(w, r); return r;
+  }
+  function grams(s) {
+    const out = [];
+    for (let w of WORDS(s)) { w = '_' + w.toLowerCase() + '_'; const cs = [...w]; for (let n = 1; n <= 4; n++) for (let i = 0; i + n <= cs.length; i++) out.push(cs.slice(i, i + n).join('')); }
+    return out;
+  }
+  function detect(s) {
+    const gs = grams(s); if (!gs.length || !R) return null;
+    let best = null, bs = -Infinity;
+    for (const [k, m] of Object.entries(R.langid)) { let sc = 0; for (const g of gs) sc += m.p[g] ?? m.unk; if (sc > bs) { bs = sc; best = k; } }
+    return best;
+  }
+
+  /* ---------- render ---------- */
+  let MODE = 'auto', items = [], curMt = null;
+  function placeThumb(animate) {
+    const on = $('.switch button[aria-pressed="true"]'), th = $('.switch .thumb');
+    if (!on || !th || !on.offsetWidth) return;
+    if (!animate) th.style.transition = 'none';
+    th.style.width = on.offsetWidth + 'px';
+    th.style.transform = `translateX(${on.offsetLeft - 2}px)`;
+    if (!animate) { void th.offsetWidth; th.style.transition = ''; }
+  }
+  addEventListener('resize', () => placeThumb(false));
+  function setMode(m, animate) { MODE = m; $$('.switch button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m))); placeThumb(animate); run(); }
+  $$('.switch button').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode, true)));
+
+  function run() {
+    if (!D) return;
+    const text = $('#text').value;
+    const det = detect(text);
+    const words = WORDS(text);
+    let lang = MODE === 'auto' ? (det === 'rom' ? 'rom' : det === 'aro' ? 'aro' : null) : MODE;
+    if (!R && MODE === 'auto' && words.length) lang = 'aro';      // the detector is still loading
+    if (lang === 'rom' && !L) lang = null;                        // Lav is still loading
+    const box = $('#detect');
+    box.hidden = !det; box.className = 'detect';
+    $('#clear').hidden = !text; ghostTick();
+    $('#status').classList.toggle('live', !!det && !!R);
+    $('#status').textContent = !R && words.length ? t().waitRom : det ? `${t().detected}: ${t().det[det]} · ${t().words(words.length)}` : t().type;
+    const kp = lang ? knownPhrases(text, lang) : [], kEl = $('#known');
+    kEl.hidden = !kp.length;
+    if (kp.length) {
+      kEl.innerHTML = `<small>${t().knownT}</small><ul>` + kp.map((p) => `<li>${p.note ? '<svg class="knote" role="img" aria-label="' + esc(t().songWord) + '"><use href="#s-note"/></svg>' : ''}<b>${esc(p.text)}</b> → <span>${esc(p.ro)}</span>` +
+        `${p.note ? ` <em>· ${esc(p.note)}</em>` : ''} <a href="${esc(p.source)}" target="_blank" rel="noopener">${t().src}</a></li>`).join('') + `</ul><p>${t().knownP}</p>`;
+    }
+    if (det && MODE !== 'auto' && det !== MODE) {
+      box.className = 'detect warn';
+      box.innerHTML = `${esc(t().mismatch(t().det[det]))} ${det !== 'ro' ? `<button type="button" id="sw">${t().sw}</button>` : ''}`;
+      const sw = $('#sw'); if (sw) sw.addEventListener('click', () => setMode(det, true));
+    } else if (det) box.textContent = t().isLang(t().det[det]);
+    const mt = lang === 'aro' ? curMt : null;
+    const mtEl = $('#mt');
+    if (mt) { mtEl.className = 'mt'; mtEl.innerHTML = `<small>${t().mtsrc}</small>${esc(mt)}`; }
+    else { mtEl.className = 'mt none'; mtEl.textContent = !lang && det === 'ro' ? t().plain : t().nomt; }
+    const cards = $('#cards'); cards.textContent = ''; items = [];
+    if (!lang) { select(-1); $('#jump').hidden = true; return; }
+    const M = lang === 'aro' ? Z : L, look = lang === 'aro' ? zLookup : lLookup;
+    const mtStems = new Map();
+    if (mt) for (const w of WORDS(mt)) { const k = stem(w); mtStems.set(k, (mtStems.get(k) || 0) + 1); }
+    for (const piece of words.slice(0, 400)) {
+      const w = piece.toLowerCase(), hit = look(w);
+      let gloss, cls, confirmed = null;
+      if (hit && mt) { confirmed = M.G[hit.key].map(([g]) => g).find((g) => (mtStems.get(stem(g)) || 0) > 0) || null; if (confirmed) mtStems.set(stem(confirmed), mtStems.get(stem(confirmed)) - 1); }
+      if (confirmed) { gloss = confirmed; cls = 'g'; }
+      else if (hit && hit.how !== 'similar') { const [g, s] = M.G[hit.key][0]; gloss = g; cls = s >= M.green ? 'g' : s >= M.yellow ? 'y' : 'r'; }
+      else if (hit) { gloss = '≈ ' + M.G[hit.key][0][0]; cls = 'r'; }
+      else if (piece[0] !== piece[0].toLowerCase()) { gloss = t().name; cls = 'r'; }
+      else { gloss = '≈ ' + looksLike(M, w, lang === 'aro' ? ARO2RO : null); cls = 'r'; }
+      const trap = lang === 'aro' ? Z.traps[(hit && hit.how !== 'similar' && hit.key) || w] : null;
+      const i = items.push({ piece, w, hit, gloss, cls, trap, confirmed, lang }) - 1;
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'c'; b.dataset.i = i; b.setAttribute('aria-pressed', 'false');
+      const tg = cls === 'g' ? `<span class="tag">✓ ${t().sure}</span>` : cls === 'y' ? `<span class="tag q">~ ${t().check}</span>` : `<span class="tag r">? ${t().guess}</span>`;
+      b.innerHTML = `${tg}<b>${esc(piece)}</b><span class="g">${esc(gloss)}</span>${trap ? `<span class="stamp">${LANG === 'ro' ? 'CAPCANĂ' : 'TRAP'}</span>` : ''}`;
+      b.setAttribute('aria-label', `${piece}: ${gloss.replace('≈ ', '')}, ${cls === 'g' ? t().sure : cls === 'y' ? t().check : t().guess}${trap ? ', ' + t().trapWord : ''}`);
+      cards.append(b);
+    }
+    const first = items.findIndex((it) => it.trap);
+    select(first >= 0 ? first : items.length ? 0 : -1);
+    const jump = $('#jump'); jump.hidden = !items.length; jump.textContent = t().seeCards(items.length);
+  }
+
+  function select(i, user) {
+    $$('.c[aria-pressed="true"]').forEach((el) => el.setAttribute('aria-pressed', 'false'));
+    const box = $('#detail');
+    if (i < 0) { box.innerHTML = `<p class="empty">${esc(LANG === 'ro' ? RO.pick : EN.pick)}</p>`; return; }
+    const it = items[i], M = it.lang === 'aro' ? Z : L;
+    const el = $(`.c[data-i="${i}"]`); if (el) el.setAttribute('aria-pressed', 'true');
+    const seen = it.hit ? (M.counts[it.hit.key] ?? 0) : null;
+    let h = `<span class="mark">${it.lang === 'aro' ? 'ZB' : 'LV'}-${String(seen ?? 0).padStart(4, '0')} · ${seen != null ? t().seen(seen) : t().notseen}</span>`;
+    h += `<span class="w">${esc(it.piece)}</span>`;
+    if (it.trap) h += `<p><span class="stamp">${LANG === 'ro' ? 'CAPCANĂ' : 'TRAP'}</span> ${esc(t().trap(it.trap[0], it.trap[1]))}</p>`;
+    if (it.hit) {
+      const opts = M.G[it.hit.key].filter(([, s]) => s >= .05); const shown = opts.length ? opts : M.G[it.hit.key].slice(0, 1);
+      const picked = it.gloss.replace('≈ ', '');
+      h += '<ul>' + shown.map(([g, s]) => `<li class="${g === picked ? 'pick' : ''}"><span>${esc(g)}</span><span class="d"></span><span>${Math.round(s * 100)}%</span></li>`).join('') + '</ul>';
+      h += `<p>${esc(it.hit.how === 'known' ? t().known : it.hit.how === 'spelling' ? t().spelling(it.hit.key) : t().similar(it.hit.key))}</p>`;
+    } else h += `<p>${esc(t().none)}</p>`;
+    if (it.confirmed) h += `<p>✓ ${esc(t().conf(it.confirmed))}</p>`;
+    if (it.lang === 'rom' && SLANG.has(it.w)) h += `<p>${esc(t().slang)}</p>`;
+    h += `<p>${esc(t().like(looksLike(M, it.w, it.lang === 'aro' ? ARO2RO : null)))}</p>`;
+    box.innerHTML = h;
+    if (user && matchMedia('(max-width:1100px)').matches) box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  $('#cards').addEventListener('click', (e) => { const b = e.target.closest('.c'); if (b) select(Number(b.dataset.i), true); });
+
+  /* ---------- results ---------- */
+  const fmt = (v) => (typeof v === 'number' ? v.toFixed(1) + '%' : v == null ? '–' : esc(v));
+  function table(el, cols, rows, ours) {
+    el.innerHTML = '<thead><tr>' + cols.map(([, h]) => `<th scope="col">${esc(h)}</th>`).join('') + '</tr></thead><tbody>' +
+      rows.map((r) => `<tr class="${ours(r) ? 'ours' : ''}">` + cols.map(([k]) => `<td>${fmt(r[k])}</td>`).join('') + '</tr>').join('') + '</tbody>';
+  }
+  const autoCols = (rows, first, label) => [[first, label], ...Object.keys(rows[0]).filter((k) => k !== first).map((k) => [k, k])];
+  function renderMethod() {
+    table($('#t-aro'), [['method', 'Method'], ['sentences: exact', 'Sentences'], ['sentences: content words', 'Content words'], ['dictionary words: exact', 'Dictionary words'], ['folk tales: exact', 'Folk tales']],
+      D.results, (r) => String(r.method).startsWith('Zbor'));
+    if (D.phrasebook) table($('#t-pb'), autoCols(D.phrasebook, 'index', 'Method'), D.phrasebook, (r) => String(r.index).startsWith('Zbor'));
+    if (D.context && D.context.words) {
+      const ch = Object.fromEntries(D.context.chrf.map((r) => [r['test set'], r]));
+      const rows = D.context.words.map((r) => ({ s: r['test set'], a: r['Zbor alone: right'], c: r['Zbor + context: right'], f: r['words confirmed in context'], k: r['confirmed words that are right'], m: ch[r['test set']] ? String(ch[r['test set']]['AroTranslate (whole sentence)']) : '' }));
+      table($('#t-ctx'), [['s', 'Test set'], ['a', 'Zbor alone'], ['c', 'Zbor + context'], ['f', 'Words confirmed'], ['k', 'Confirmed and right'], ['m', 'AroTranslate chrF']], rows, () => false);
+    }
+  }
+  function renderMethodRom() {
+    table($('#t-rom'), autoCols(R.rom.results, 'index', 'Method'), R.rom.results, (r) => String(r.index).startsWith('Lav ('));
+    table($('#t-lid'), autoCols(R.langid_results.table, 'index', 'Language'), R.langid_results.table, () => false);
+    const ev = R.langid_results.everyday;
+    $('#lid-everyday').textContent = Object.entries(ev).filter(([, v]) => v != null).map(([k, v]) => `${k}: ${v.toFixed(1)}%`).join(' · ');
+  }
+  function renderStats() {
+    if (!R) return;
+    const pb = D.phrasebook && D.phrasebook.find((r) => String(r.index).startsWith('Zbor'));
+    const rr = R.rom.results.find((r) => String(r.index).startsWith('Lav ('));
+    const ev = Object.values(R.langid_results.everyday).filter((v) => v != null);
+    const avg = ev.length ? ev.reduce((a, b) => a + b, 0) / ev.length : null;
+    const figs = [[pb ? pb[Object.keys(pb).find((k) => k.startsWith('all'))] : null, t().st1], [rr ? rr[Object.keys(rr).find((k) => k.startsWith('everyday (all'))] : null, t().st2], [avg, t().st3]];
+    $('#stats').innerHTML = figs.filter(([v]) => v != null).map(([v, s]) => `<div><b>${v.toFixed(1)}%</b><p>${esc(s)}</p></div>`).join('');
+    renderCharts();
+  }
+  /* results charts: horizontal bars, 0–100 %, our model vs guessing by spelling; every bar carries its value as text */
+  function renderCharts() {
+    if (!D || !R) return;
+    const c = t().ch, num = (v) => (typeof v === 'number' ? v : parseFloat(v));
+    const bar = (cls, who, v, what) => `<div class="bar ${cls}" title="${esc(`${who}: ${v.toFixed(1)}% · ${what}`)}"><span class="track"><span class="fill" style="width:${Math.max(0, Math.min(100, v))}%"></span></span><b>${v.toFixed(1)}%</b></div>`;
+    const card = (title, sub, legend, rows) => `<figure class="chart"><h3>${esc(title)}</h3><p class="sub">${esc(sub)}</p>${legend}` +
+      rows.map(([lab, bars]) => `<div class="brow"><span class="lab">${esc(lab)}</span><div class="bars">${bars}</div></div>`).join('') + '</figure>';
+    const leg = (ours) => `<ul class="legend2"><li><i style="background:var(--c-ours)"></i>${esc(ours)}</li><li><i style="background:var(--c-base)"></i>${esc(c.base)}</li></ul>`;
+    const pick = (rows, key, start) => rows.find((r) => String(r[key]).startsWith(start)) || {};
+    const zb = pick(D.results, 'method', 'Zbor'), lk = pick(D.results, 'method', 'looks');
+    const pz = pick(D.phrasebook || [], 'index', 'Zbor'), pl = pick(D.phrasebook || [], 'index', 'looks');
+    const aro = [[c.a1, 'sentences: exact', zb, lk], [c.a2, 'dictionary words: exact', zb, lk], [c.a3, 'folk tales: exact', zb, lk], [c.a4, 'all 55', pz, pl]]
+      .filter(([, k, o]) => o[k] != null)
+      .map(([lab, k, o, b]) => [lab, bar('ours', 'Zbor', num(o[k]), lab) + bar('base', c.base, num(b[k]), lab)]);
+    const lv = pick(R.rom.results, 'index', 'Lav ('), rl = pick(R.rom.results, 'index', 'looks');
+    const romKeys = Object.keys(lv);
+    const kOf = (start) => romKeys.find((k) => k.startsWith(start));
+    const rom = [[c.r1, kOf('Bible')], [c.r2, kOf('everyday (all')], [c.r3, kOf('from popular')]].filter(([, k]) => k)
+      .map(([lab, k]) => [lab, bar('ours', 'Lav', num(lv[k]), lab) + bar('base', c.base, num(rl[k]), lab)]);
+    const names = { Aromanian: t().det.aro, Romani: t().det.rom, Romanian: t().det.ro };
+    const lid = R.langid_results.table.map((r) => [`${names[r.index] || r.index} · ${c.l1}`, bar('ours', c.lidT, num(r.sentences), r.index)]);
+    Object.entries(R.langid_results.everyday).forEach(([k, v]) => { if (v != null) lid.push([k.startsWith('Arom') ? c.l2 : c.l3, bar('ours', c.lidT, num(v), k)]); });
+    const lvl = { green: '✓ ' + t().sure, yellow: '~ ' + t().check, red: '? ' + t().guess };
+    const cal = [];
+    [['Zbor', D.calibration], ['Lav', R.rom.calibration]].forEach(([who, rows]) => ['green', 'yellow', 'red'].forEach((col) => {
+      const r = (rows || []).find((x) => x.colour === col); if (r) cal.push([`${who} · ${lvl[col]}`, bar('ours', who, num(r['% right on TEST']), lvl[col])]);
+    }));
+    $('#charts').innerHTML = card(c.t1, c.s1, leg('Zbor'), aro) + card(c.t2, c.s2, leg('Lav'), rom) + card(c.t3, c.s3, '', lid) + card(c.t4, c.s4, '', cal);
+  }
+  function renderSame() {
+    if (!R || !R.mixups || !R.mixups.length) return;
+    const rows = R.mixups.filter((r) => r.word.length >= 2 && r['Aromanian meaning'] !== r.word && r['Romani meaning'] !== r.word).slice(0, 6);
+    $('#same-t').innerHTML = '<thead><tr>' + t().th.map((h) => `<th scope="col">${h}</th>`).join('') + '</tr></thead><tbody>' +
+      rows.map((r) => `<tr><td>${esc(r.word)}</td><td>${esc(r['Aromanian meaning'])}</td><td>${esc(r['Romani meaning'])}</td></tr>`).join('') + '</tbody>';
+    $('#same').hidden = false;
+  }
+  function examples(list) {
+    const box = $('#chips');
+    list.forEach((ex) => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'chip';
+      b.innerHTML = `<i class="${ex.mode === 'rom' ? 'ro' : ''}">${ex.mode === 'aro' ? 'ARO' : 'ROM'}</i>${esc(ex.label)}`;
+      b.addEventListener('click', () => load(ex.text, ex.mt)); box.append(b);
+    });
+    return list;
+  }
+  function load(text, mt) { $('#text').value = text; curMt = mt || null; setMode('auto'); }
+  function renderSongs() {
+    const s = R.rom.songs || []; if (!s.length) return;
+    $('#songs').innerHTML = s.slice(0, 8).map((r, i) => `<button type="button" class="song" data-i="${i}"><svg class="snote" aria-hidden="true"><use href="#s-note"/></svg><b>${esc(r.rom)}</b><span>${esc(r.ro)}</span><small>${esc(r.heard_in)}</small></button>`).join('');
+    $('#songs').addEventListener('click', (e) => { const b = e.target.closest('.song'); if (!b) return; load(s[+b.dataset.i].rom); $('#tool').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' }); });
+    $('#songs-sec').hidden = false;
+  }
+  /* typing placeholder shown while the box is empty */
+  const GHOSTS = ['Mi-easti dor di hoara-a mea.', 'Tu san shukar, chaiorie!', 'Haristo! Cumu eshti?', 'Socares, prala?'];
+  let gTimer = null;
+  function ghostTick() {
+    const g = $('#ghost'), ta = $('#text');
+    if (ta.value || document.activeElement === ta) { g.hidden = true; clearTimeout(gTimer); gTimer = null; return; }
+    g.hidden = false;
+    if (gTimer) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { g.textContent = GHOSTS[0]; return; }
+    let gi = 0, ci = 0, dir = 1;
+    const step = () => {
+      const w = GHOSTS[gi]; ci += dir; g.textContent = w.slice(0, ci);
+      let wait = dir > 0 ? 70 : 30;
+      if (ci >= w.length) { dir = -1; wait = 1600; } else if (ci <= 0) { dir = 1; gi = (gi + 1) % GHOSTS.length; wait = 400; }
+      gTimer = setTimeout(step, wait);
+    };
+    step();
+  }
+
+  async function start() {
+    applyLang();
+    /* The data ships as two script files (window.ZBOR_ARO, window.ZBOR_ROM) next to this page. Scripts load even when
+       index.html is opened straight from a folder (file://), where browsers block fetching .json files. */
+    const get = (file, name) => new Promise((resolve, reject) => {
+      if (window[name]) return resolve(window[name]);
+      const s = document.createElement('script');
+      s.src = file; s.async = true;
+      s.onload = () => (window[name] ? resolve(window[name]) : reject(new Error(file)));
+      s.onerror = () => reject(new Error(file));
+      document.head.append(s);
+    });
+    const romP = get('zbor_rom.js', 'ZBOR_ROM');   // starts loading in parallel; Aromanian cards don't wait for it
+    try { D = await get('zbor_aro.js', 'ZBOR_ARO'); }
+    catch (e) { $('#status').textContent = 'The dictionary did not load. Keep zbor_aro.js and zbor_rom.js in the same folder as this page, then reload.'; return; }
+    setupZ();
+    const list = D.examples.slice(0, 2).map((e) => ({ label: e.label, text: e.aro, mt: e.mt, mode: 'aro' }));
+    examples(list);
+    if (list[0]) { $('#text').value = list[0].text; curMt = list[0].mt || null; }
+    renderMethod(); applyLang(); placeThumb(false);
+    romP.then((r) => {
+      R = r; setupL();
+      examples(R.rom.examples.slice(0, 2).map((e) => ({ label: e.label, text: e.rom, mode: 'rom' })));
+      renderMethodRom(); renderSongs(); renderStats(); renderSame(); run();
+    }).catch(() => { $('#status').textContent = t().romFail; });
+    const ta = $('#text');
+    let tm; ta.addEventListener('input', () => { curMt = null; $('#clear').hidden = !ta.value; clearTimeout(tm); tm = setTimeout(run, 250); });
+    ta.addEventListener('focus', ghostTick); ta.addEventListener('blur', ghostTick);
+    $('#clear').addEventListener('click', () => { ta.value = ''; curMt = null; run(); ta.focus(); });
+    if (document.fonts) document.fonts.ready.then(() => placeThumb(false));
+  }
+  start();
+})();
+</script>
