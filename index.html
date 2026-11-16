@@ -103,6 +103,7 @@ h2{font:400 40px/1.1 "Source Serif 4",serif;margin:0 0 10px;text-wrap:balance}
 .mt{border-top:2px solid var(--crimson);background:var(--paper);padding:12px 16px;font:19px "Courier Prime",monospace;margin-bottom:26px;outline:1px solid color-mix(in srgb,var(--crimson) 25%,transparent);outline-offset:-5px}
 .mt small{display:block;font:600 12px "Source Sans 3";letter-spacing:.14em;color:var(--crimson-ink);text-transform:uppercase}
 .mt.none{font:15px "Source Sans 3";color:var(--soft)}
+.mt.draft{font-style:normal}.mt.draft .dg{font-style:normal;color:var(--soft);text-decoration:underline dotted;text-underline-offset:3px}.mt.draft .dnote{display:block;margin-top:6px;font:13.5px "Source Sans 3";color:var(--soft)}
 .known{background:var(--paper);border:1px solid var(--crimson);border-left:6px solid var(--crimson);padding:12px 16px;margin:0 0 16px}
 .known small{display:block;font:600 12px "Source Sans 3";letter-spacing:.14em;text-transform:uppercase;color:var(--crimson-ink)}
 .known ul{list-style:none;margin:6px 0;padding:0}.known li{margin:4px 0;font-size:16px}
@@ -798,7 +799,7 @@ document.documentElement.lang = 'en';
       det: { aro: 'Aromanian', rom: 'Romani', ro: 'Romanian' }, detected: 'Detected', using: 'explained as',
       isLang: (l) => `✓ Language check: this looks like ${l}`, mismatch: (l) => `This looks more like ${l}.`, sw: 'Switch',
       plain: 'This looks like Romanian, so there is nothing to translate. Pick Aromână or Romani to explain it anyway.',
-      mtsrc: 'Whole sentence · AroTranslate', nomt: 'Word-by-word cards only. Whole-sentence translations come from our notebook; pick an Aromanian example to see one.',
+      mtsrc: 'Whole sentence · AroTranslate', draftT: 'Whole sentence · rough draft from the word meanings', draftP: 'A draft, not a full translation: it keeps the original word order, and words with a question mark are guesses. Our examples also show the full sentence translation by AroTranslate.', nomt: 'Word-by-word cards only. Whole-sentence translations come from our notebook; pick an Aromanian example to see one.',
       seen: (n) => `seen ${n} ${n === 1 ? 'time' : 'times'} in training`, notseen: 'not in the dictionary',
       known: 'Found in the learned dictionary.', spelling: (k) => `Found after converting the spelling to “${k}”.`, similar: (k) => `Unknown; borrowed from the similar word “${k}”. Often wrong.`,
       none: 'Not in the dictionary. The guess is only the Romanian word it is spelled most like.', conf: (g) => `“${g}” also appears in the whole-sentence translation.`,
@@ -819,7 +820,7 @@ document.documentElement.lang = 'en';
       det: { aro: 'aromână', rom: 'romani', ro: 'română' }, detected: 'Detectat', using: 'explicat ca',
       isLang: (l) => `✓ Verificarea limbii: pare ${l}`, mismatch: (l) => `Pare mai degrabă ${l}.`, sw: 'Schimbă',
       plain: 'Pare română, deci nu e nimic de tradus. Alege Aromână sau Romani ca să-l explici oricum.',
-      mtsrc: 'Propoziția întreagă · AroTranslate', nomt: 'Doar fișe cuvânt cu cuvânt. Traducerile propozițiilor vin din notebook-ul nostru; alege un exemplu în aromână ca să vezi una.',
+      mtsrc: 'Propoziția întreagă · AroTranslate', draftT: 'Propoziția întreagă · schiță din sensurile cuvintelor', draftP: 'O schiță, nu o traducere completă: păstrează ordinea cuvintelor din original, iar cuvintele cu semn de întrebare sunt ghicite. Exemplele noastre arată și traducerea completă făcută de AroTranslate.', nomt: 'Doar fișe cuvânt cu cuvânt. Traducerile propozițiilor vin din notebook-ul nostru; alege un exemplu în aromână ca să vezi una.',
       seen: (n) => `văzut de ${n} ori la antrenare`, notseen: 'nu e în dicționar',
       known: 'Găsit în dicționarul învățat.', spelling: (k) => `Găsit după ce am convertit scrierea în „${k}”.`, similar: (k) => `Necunoscut; sens împrumutat de la cuvântul asemănător „${k}”. Des greșit.`,
       none: 'Nu e în dicționar. Ghicitul e doar cuvântul românesc cel mai asemănător ca scriere.', conf: (g) => `„${g}” apare și în traducerea propoziției.`,
@@ -1051,7 +1052,7 @@ document.documentElement.lang = 'en';
       box.innerHTML = `${esc(t().mismatch(t().det[det]))} ${det !== 'ro' ? `<button type="button" id="sw">${t().sw}</button>` : ''}`;
       const sw = $('#sw'); if (sw) sw.addEventListener('click', () => setMode(det, true));
     } else if (det) box.textContent = t().isLang(t().det[det]);
-    const mt = lang === 'aro' ? curMt : null;
+    const mt = lang === 'aro' ? (curMt || exampleMt(text)) : null;
     const mtEl = $('#mt');
     if (mt) { mtEl.className = 'mt'; mtEl.innerHTML = `<small>${t().mtsrc}</small>${esc(mt)}`; }
     else { mtEl.className = 'mt none'; mtEl.textContent = !lang && det === 'ro' ? t().plain : t().nomt; }
@@ -1081,6 +1082,33 @@ document.documentElement.lang = 'en';
     const first = items.findIndex((it) => it.trap);
     select(first >= 0 ? first : items.length ? 0 : -1);
     const jump = $('#jump'); jump.hidden = !items.length; jump.textContent = t().seeCards(items.length);
+    // No neural translation for this text (it only exists for our examples): show a rough sentence made from the
+    // word meanings, keeping the original punctuation, and say clearly that it is a draft.
+    if (!mt && items.length) {
+      let k = 0, html = '', last = 0, first = true;
+      const src = fixCed(text.normalize('NFC')).slice(0, 4000), re = /\p{L}[\p{L}\p{M}]*/gu;
+      for (let m; (m = re.exec(src));) {
+        const it = items[k++];
+        let g = !it || it.gloss === t().name ? m[0] : it.gloss.replace('≈ ', '');
+        if (first) { g = g.charAt(0).toUpperCase() + g.slice(1); first = false; }
+        html += esc(src.slice(last, m.index)) + (it && it.cls === 'r' && it.gloss !== t().name ? `<i class="dg">${esc(g)}?</i>` : esc(g));
+        last = m.index + m[0].length;
+      }
+      html += esc(src.slice(last));
+      mtEl.className = 'mt draft';
+      mtEl.innerHTML = `<small>${t().draftT}</small>${html}<span class="dnote">${esc(t().draftP)}</span>`;
+    }
+  }
+  /* the stored AroTranslate sentence for an example, also when it is typed or pasted with other spacing or punctuation */
+  const normEx = (s) => strip(fixCed(String(s).normalize('NFC')).toLowerCase()).replace(/[^\p{L}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
+  function exampleMt(text) {
+    const q = normEx(text); if (q.length < 12) return null;
+    for (const e of (D.examples || [])) {
+      if (!e.mt) continue;
+      const k = normEx(e.aro);
+      if (k === q || (q.length >= 25 && (k.startsWith(q) || q.startsWith(k)))) return e.mt;
+    }
+    return null;
   }
 
   function select(i, user) {
@@ -1217,7 +1245,7 @@ document.documentElement.lang = 'en';
        index.html is opened straight from a folder (file://), where browsers block fetching .json files. */
     const get = (file, name) => new Promise((resolve, reject) => {
       if (window[name]) return resolve(window[name]);
-      const s = document.createElement('script');
+      const s = document.createElement('script'); s.charset = 'utf-8';
       s.src = file; s.async = true;
       s.onload = () => (window[name] ? resolve(window[name]) : reject(new Error(file)));
       s.onerror = () => reject(new Error(file));
