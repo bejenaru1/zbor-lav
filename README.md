@@ -1,5 +1,7 @@
 # Zbor · Lav
 
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="logo/zbor-lav-logo-wordmark-on-dark.png"><img src="logo/zbor-lav-logo-wordmark.png" alt="Zbor · Lav" width="420"></picture></p>
+
 Word-by-word helpers for Romanian readers: **Zbor** explains Aromanian, **Lav** explains Romani, and a language check tells the two apart.
 Built for the Veritas AI International High School Hackathon 2026 (AI + Languages track) by Lavinia Ichim, Bianca-Mihaela Cajvan and Alexandru-Eduard Bejenaru.
 
@@ -16,6 +18,7 @@ Built for the Veritas AI International High School Hackathon 2026 (AI + Language
 | `zbor_aro.js` | Zbor's learned Aromanian→Romanian dictionary, exported by our notebook |
 | `zbor_rom.js` | Lav's learned Romani→Romanian dictionary and the language detector, exported by our notebook |
 | `team.jpg`, `share.jpg` | Team photo and link-preview image |
+| `logo/` | The logo as transparent PNGs: a swallow (*zbor* looks like Romanian "flight") inside a speech bubble (it really means "word") |
 
 You can also download the folder and double-click `index.html`; it works offline (fonts aside).
 

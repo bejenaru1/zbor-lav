@@ -5,7 +5,7 @@
 <title>Zbor · Lav</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#B3122B">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 44'%3E%3Cpath d='M4 43V20A16 16 0 0 1 36 20V43Z' fill='%23B3122B'/%3E%3Cpath d='M8.5 43V20.5A11.5 11.5 0 0 1 31.5 20.5V43' fill='none' stroke='%23F7F1E6' stroke-width='1.6'/%3E%3Cpath d='M20 3.4 21 6.3 23.9 7.3 21 8.3 20 11.2 19 8.3 16.1 7.3 19 6.3Z' fill='%23F7F1E6'/%3E%3Ctext x='20' y='35' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='17' fill='%23F7F1E6'%3Ezl%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='14 14 172 180'%3E%3Cpath d='M60 16H140A44 44 0 0 1 184 60V116A44 44 0 0 1 140 160H84L40 190Q34 193 36 186L46 158A44 44 0 0 1 16 116V60A44 44 0 0 1 60 16Z' fill='%23B3122B'/%3E%3Cg transform='translate(101 89) scale(.8) translate(-96 -96)'%3E%3Cpath d='M164 52Q152 44 139 52Q132 56 127 62C112 44 84 30 42 28C72 40 92 60 103 82C84 98 58 116 28 138C52 132 70 124 86 114C76 132 66 148 54 164C78 144 100 124 117 106C136 100 150 86 156 64Q159 57 164 52Z' fill='%23FBF3E8'/%3E%3Ccircle cx='146' cy='56' r='3' fill='%23B3122B'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:title" content="Zbor · Lav: Aromanian and Romani, word by word">
 <meta property="og:description" content="Paste a text in Aromanian or Romani. Zbor · Lav finds the language, explains every word and flags the look-alike traps Romanians fall for.">
 <meta property="og:type" content="website">
@@ -32,7 +32,7 @@ button{font:inherit;color:inherit}
 .nav{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:5}
 .nav .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;white-space:nowrap;color:var(--crimson-ink)}
-.logo .emblem{width:38px;height:42px;flex:none;transition:transform .25s}.logo:hover .emblem{transform:translateY(-2px) rotate(-3deg)}
+.logo .emblem{width:40px;height:42px;flex:none;transition:transform .25s}.logo:hover .emblem{transform:translateY(-2px) rotate(-3deg)}
 .logo .wm{display:flex;flex-direction:column;line-height:1}
 .logo .wn{font:600 25px/1 "Source Serif 4",serif;color:var(--crimson-ink)}.logo .wn i{font-style:normal;color:var(--ink);font-weight:400}.logo .wn em{font-style:italic;font-weight:400}
 .logo .tl{font:600 9.5px "Source Sans 3";letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-top:4px}
@@ -248,7 +248,7 @@ section.aboutband{background:var(--ground);color:var(--on-crimson);padding:56px 
 /* phone: jump from the box to the results */
 .jump{display:none}
 @media (max-width:900px){textarea{padding-right:50px}.clear{right:10px}.row .btn.go{display:none}.jump{display:block;margin-top:10px;text-align:center;font:700 14px "Source Sans 3";color:var(--crimson-ink);border:1.5px solid var(--crimson-ink);border-radius:3px;padding:11px;text-decoration:none}.features{grid-template-columns:1fr 1fr}}
-@media (max-width:600px){.features{grid-template-columns:1fr}.logo .tl{display:none}.logo .wn{font-size:22px}.logo .emblem{width:28px;height:31px}}
+@media (max-width:600px){.features{grid-template-columns:1fr}.logo .tl{display:none}.logo .wn{font-size:22px}.logo .emblem{width:30px;height:31px}}
 /* why it matters: a type-led statement that lights up word by word, three specimen words, one fact line */
 section.why2{min-height:min(700px,86vh);display:flex;flex-direction:column;justify-content:center}
 .why2grid{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:center}
@@ -336,7 +336,7 @@ h1[tabindex="-1"]:focus{outline:none}
   <symbol id="s-cards" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="2.5" y="6.5" width="12" height="15" rx="1.2"/><rect x="9.5" y="2.5" width="12" height="15" rx="1.2" fill="var(--paper)"/><path d="M12.5 7h6M12.5 10h4.5M12.5 13h5.5" stroke-linecap="round"/></g></symbol>
   <symbol id="s-trap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 22.2 20.5H1.8z"/><path d="M12 9.5v5"/><path d="M12 17.6v.2"/></g></symbol>
   <symbol id="s-slang" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M7 10.5h.2M12 10.5h.2M17 10.5h.2" stroke-width="2.4" stroke-linecap="round"/></g></symbol>
-  <symbol id="s-logo" viewBox="0 0 40 44"><path d="M4 43V20A16 16 0 0 1 36 20V43Z" fill="var(--crimson)"/><path d="M8.5 43V20.5A11.5 11.5 0 0 1 31.5 20.5V43" fill="none" stroke="var(--on-crimson)" stroke-width="1.1"/><path d="M20 3.4 21 6.3 23.9 7.3 21 8.3 20 11.2 19 8.3 16.1 7.3 19 6.3Z" fill="var(--on-crimson)"/><text x="20" y="34" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="15" fill="var(--on-crimson)">z·l</text></symbol>
+  <symbol id="s-logo" viewBox="14 14 172 180"><path d="M60 16H140A44 44 0 0 1 184 60V116A44 44 0 0 1 140 160H84L40 190Q34 193 36 186L46 158A44 44 0 0 1 16 116V60A44 44 0 0 1 60 16Z" fill="var(--crimson)"/><g transform="translate(101 89) scale(.8) translate(-96 -96)"><path d="M164 52Q152 44 139 52Q132 56 127 62C112 44 84 30 42 28C72 40 92 60 103 82C84 98 58 116 28 138C52 132 70 124 86 114C76 132 66 148 54 164C78 144 100 124 117 106C136 100 150 86 156 64Q159 57 164 52Z" fill="var(--on-crimson)"/><circle cx="146" cy="56" r="3" fill="var(--crimson)"/></g></symbol>
   <symbol id="s-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="1.6"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.6"/></g></symbol>
   <symbol id="s-orn" viewBox="0 0 240 20"><g fill="none" stroke="currentColor" stroke-width="1"><path d="M0 10h100M140 10h100"/><path d="M104 10h6M130 10h6"/></g><use href="#s-star" x="112" y="2" width="16" height="16"/></symbol>
  </defs>
@@ -345,7 +345,7 @@ h1[tabindex="-1"]:focus{outline:none}
 <header class="nav">
  <div class="wrap">
   <a class="logo" href="#translator" aria-label="Zbor · Lav, home">
-   <svg class="emblem" aria-hidden="true" viewBox="0 0 40 44"><use href="#s-logo"/></svg>
+   <svg class="emblem" aria-hidden="true" viewBox="14 14 172 180"><use href="#s-logo"/></svg>
    <span class="wm"><span class="wn">Zbor <i>·</i> <em>Lav</em></span><span class="tl" data-i18n="tagline">Aromanian &amp; Romani, word by word</span></span>
   </a>
   <nav class="menu" aria-label="Main">
